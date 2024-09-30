@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { instructorGuard } from 'src/app/core/guards/instructor/instructor.guard';
+import { studentGuard } from 'src/app/core/guards/student/student.guard';
 
 const routes: Routes = [
   {
@@ -9,6 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'instructor',
+        canActivate:[instructorGuard],
         loadChildren: () =>
           import('./instructor/instructor.module').then(
             (m) => m.InstructorModule
@@ -16,6 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'student',
+        canActivate:[studentGuard],
         loadChildren: () =>
           import('./student/student.module').then((m) => m.StudentModule),
       },
