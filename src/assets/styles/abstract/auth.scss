@@ -1,0 +1,18 @@
+@import 'variables.scss';
+
+.auth {
+  background: $ternary-color;
+
+  .auth-box {
+    min-height: 100vh;
+
+    .img-part {
+      background-color: $secondary-color;
+      border-radius: $border-radius-auth;
+      display: grid;
+      place-items: center;
+      height: 100%;
+    }
+  }
+
+}

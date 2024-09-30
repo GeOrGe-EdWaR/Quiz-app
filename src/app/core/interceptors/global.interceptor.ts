@@ -3,16 +3,26 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class GlobalInterceptor implements HttpInterceptor {
-
   constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    const baseUrl = 'https://upskilling-egypt.com:3005/api/';
+    const accessToken = localStorage.getItem('userToken') ?? '';
+    const newRequest = request.clone({
+      url: request.url.includes('assets')
+        ? request.url
+        : baseUrl + '/' + request.url,
+      headers: request.headers.set('Authorization', accessToken),
+    });
+    return next.handle(newRequest);
   }
 }
