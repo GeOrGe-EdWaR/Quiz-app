@@ -6,7 +6,7 @@ export const instructorGuard: CanActivateFn = (route, state) => {
   const token = localStorage.getItem('userToken');
   const role = localStorage.getItem('role');
   const _Router = inject(Router);
-  if (token !== null && role === 'instructor') {
+  if (token !== null && role === 'Instructor') {
     return true;
   } else {
     _Router.navigate(['/auth/login']);
