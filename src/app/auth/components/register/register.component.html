@@ -1,1 +1,141 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" class="form row mx-0">
+  <div class="col-md-6 mb-3">
+    <mat-label>Your first name</mat-label>
+    <mat-form-field appearance="outline" class="w-100">
+      <input
+        matInput
+        placeholder="Type your first name"
+        name="first_name"
+        formControlName="first_name"
+      />
+      <mat-icon matPrefix>person</mat-icon>
+    </mat-form-field>
+    <div
+      class="position-relative error-text"
+      *ngIf="
+        registerForm.get('first_name')?.invalid &&
+        registerForm.get('first_name')?.touched
+      "
+    >
+      <small *ngIf="registerForm.get('first_name')?.hasError('required')">
+        First name is required
+      </small>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <mat-label>Your last name</mat-label>
+    <mat-form-field appearance="outline" class="w-100">
+      <input
+        matInput
+        placeholder="Type your last name"
+        name="last_name"
+        formControlName="last_name"
+      />
+      <mat-icon matPrefix>person</mat-icon>
+    </mat-form-field>
+    <div
+      class="position-relative error-text"
+      *ngIf="
+        registerForm.get('last_name')?.invalid &&
+        registerForm.get('last_name')?.touched
+      "
+    >
+      <small *ngIf="registerForm.get('last_name')?.hasError('required')">
+        Last name is required
+      </small>
+    </div>
+  </div>
+
+  <div class="col-md-12 mb-3">
+    <mat-label>Your email</mat-label>
+    <mat-form-field appearance="outline" class="w-100">
+      <input
+        matInput
+        placeholder="Type your email"
+        name="email"
+        formControlName="email"
+      />
+      <mat-icon matPrefix>email</mat-icon>
+    </mat-form-field>
+    <div
+      class="position-relative error-text"
+      *ngIf="
+        registerForm.get('email')?.invalid && registerForm.get('email')?.touched
+      "
+    >
+      <small *ngIf="registerForm.get('email')?.hasError('required')">
+        Email is required
+      </small>
+      <small *ngIf="registerForm.get('email')?.hasError('email')">
+        Invalid email format
+      </small>
+    </div>
+  </div>
+
+  <div class="col-md-12 mb-3">
+    <mat-label>Your role</mat-label>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-select
+        placeholder="Select your role"
+        name="role"
+        formControlName="role"
+      >
+        <mat-option *ngFor="let role of rolesList" [value]="role.value">{{
+          role.label
+        }}</mat-option>
+      </mat-select>
+
+      <mat-icon matPrefix>supervisor_account</mat-icon>
+    </mat-form-field>
+    <div
+      class="position-relative error-text"
+      *ngIf="
+        registerForm.get('role')?.invalid && registerForm.get('role')?.touched
+      "
+    >
+      <small *ngIf="registerForm.get('role')?.hasError('required')">
+        Role is required
+      </small>
+    </div>
+  </div>
+
+  <div class="col-md-12 mb-4">
+    <mat-label>Your password</mat-label>
+    <mat-form-field appearance="outline" class="w-100">
+      <input
+        matInput
+        placeholder="Type your password"
+        name="password"
+        formControlName="password"
+        [type]="showPassword ? 'text' : 'password'"
+      />
+      <mat-icon matPrefix (click)="showPassword = !showPassword">
+        {{ !showPassword ? "visibility_off" : "visibility" }}</mat-icon
+      >
+    </mat-form-field>
+    <div
+      class="position-relative error-text"
+      *ngIf="
+        registerForm.get('password')?.invalid &&
+        registerForm.get('password')?.touched
+      "
+    >
+      <small *ngIf="registerForm.get('password')?.hasError('required')">
+        Password is required
+      </small>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <a
+      mat-fab
+      extended
+      class="rounded-3 bg-white text-dark fw-bold"
+      (click)="submit()"
+    >
+      Sign Up
+      <mat-icon class="bg-dark rounded-circle fs-12">check</mat-icon>
+    </a>
+  </div>
+</form>
