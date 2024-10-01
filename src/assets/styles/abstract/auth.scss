@@ -1,5 +1,20 @@
 @import 'variables.scss';
 
+
+.auth {
+  --mdc-outlined-text-field-outline-color: white !important;
+  --mdc-outlined-text-field-focus-outline-color: white !important;
+  --mdc-outlined-text-field-hover-outline-color: white !important;
+  --mdc-outlined-text-field-input-text-color: white !important;
+  --mdc-outlined-text-field-input-text-placeholder-color: white !important;
+
+  --mat-select-enabled-arrow-color: white !important;
+  --mat-select-focused-arrow-color: white !important;
+  --mat-select-enabled-trigger-text-color: white !important;
+  --mat-select-placeholder-text-color: white !important;
+  // --mat-select-trigger-text-size: 14px;
+}
+
 .auth {
   background: $ternary-color;
 
@@ -13,6 +28,32 @@
       place-items: center;
       height: 100%;
     }
-  }
 
+    .main-txt{
+      color:  #7cb342;
+    }
+
+    .mat-form-field {
+      height: 30px !important; // Use the variable
+    }
+
+    .mat-form-field-infix {
+      height: 100%;
+    }
+
+    input.mat-input-element {
+      height: 100%;
+      line-height: 16px;
+    }
+
+    mat-label {
+      color: white !important;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .mat-icon {
+      color: white !important;
+    }
+  }
 }
