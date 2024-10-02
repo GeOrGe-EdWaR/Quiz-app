@@ -1,8 +1,12 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginRequest } from '../interfaces/login-request';
 import { jwtDecode } from 'jwt-decode';
+
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { RegisterFormModel } from '../interfaces/register-form-model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,4 +40,7 @@ export class AuthService {
     }
   }
 
+  register(formData: RegisterFormModel): Observable<any> {
+    return this.httpClient.post(this.url + 'register', formData);
+  }
 }
