@@ -12,9 +12,14 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root',
 })
 export class AuthService {
-  role: string | null = '';
-  constructor(private httpClient: HttpClient) {}
+  role: any = '';
   url = 'auth/';
+
+  constructor(private httpClient: HttpClient) {
+    if (localStorage.getItem('userToken') !== null) {
+      this.getUserData();
+    }
+  }
 
   onLogin(loginForm: FormGroup): Observable<LoginResponse> {
     return this.httpClient.post<LoginResponse>(

@@ -52,7 +52,9 @@ export class SidebarComponent {
     },
   ];
 
-  constructor(private _AuthService: AuthService) {}
+  constructor( private _AuthService: AuthService ) {
+    this.list
+  }
 
   isInstructor() {
     return this._AuthService.role == 'Instructor' ? true : false;
