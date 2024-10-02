@@ -1,6 +1,8 @@
 @import 'variables.scss';
 
 .auth {
+
+
   background: $ternary-color;
 
   .auth-box {
@@ -15,4 +17,18 @@
     }
   }
 
+  h2 {
+    color: #7cb342;
+  }
+
+  div {
+    span {
+
+      a {
+        color: #7cb342;
+
+      }
+    }
+
+  }
 }
