@@ -55,10 +55,10 @@ export class SidebarComponent {
   constructor(private _AuthService: AuthService) {}
 
   isInstructor() {
-    return this._AuthService.userRole == 'Instructor' ? true : false;
+    return this._AuthService.role == 'Instructor' ? true : false;
   }
 
   isStudent() {
-    return this._AuthService.userRole == 'Student' ? true : false;
+    return this._AuthService.role == 'Student' ? true : false;
   }
 }
