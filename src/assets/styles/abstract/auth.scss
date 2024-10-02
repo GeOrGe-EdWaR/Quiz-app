@@ -14,6 +14,21 @@
   // --mat-select-trigger-text-size: 14px;
 }
 
+
+.auth {
+  --mdc-outlined-text-field-outline-color: white !important;
+  --mdc-outlined-text-field-focus-outline-color: white !important;
+  --mdc-outlined-text-field-hover-outline-color: white !important;
+  --mdc-outlined-text-field-input-text-color: white !important;
+  --mdc-outlined-text-field-input-text-placeholder-color: white !important;
+
+  --mat-select-enabled-arrow-color: white !important;
+  --mat-select-focused-arrow-color: white !important;
+  --mat-select-enabled-trigger-text-color: white !important;
+  --mat-select-placeholder-text-color: white !important;
+  // --mat-select-trigger-text-size: 14px;
+}
+
 .auth {
   background: $ternary-color;
 
@@ -26,6 +41,10 @@
       display: grid;
       place-items: center;
       height: 100%;
+    }
+
+    .main-txt{
+      color:  #7cb342;
     }
 
     .mat-form-field {
