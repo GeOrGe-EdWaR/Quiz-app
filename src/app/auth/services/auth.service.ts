@@ -7,4 +7,5 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
   url = 'auth/';
+  userRole = 'Instructor';
 }
