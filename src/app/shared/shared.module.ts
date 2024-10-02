@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,10 +12,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 @NgModule({
-  declarations: [],
+  declarations: [NavbarComponent, SidebarComponent],
   imports: [
     CommonModule,
+    RouterModule,
 
     ReactiveFormsModule,
     FormsModule,
@@ -27,6 +34,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
+    MatListModule,
+    MatToolbarModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -40,6 +49,11 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
+    MatListModule,
+    MatToolbarModule,
+
+    NavbarComponent,
+    SidebarComponent,
   ],
 })
 export class SharedModule {}
