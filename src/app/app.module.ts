@@ -11,6 +11,8 @@ import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { GlobalInterceptor } from './core/interceptors/global.interceptor';
+import { HandleErrorInterceptor } from './core/interceptors/handle-error.interceptor';
+import { SpinnerInterceptor } from './core/interceptors/spinner.interceptor';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -26,6 +28,16 @@ import { GlobalInterceptor } from './core/interceptors/global.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HandleErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
       multi: true,
     },
   ],

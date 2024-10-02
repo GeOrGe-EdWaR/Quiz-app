@@ -4,16 +4,14 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { LoginRequest } from '../../interfaces/login-request';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   hide: boolean = true;
-
 
   matcher = new ErrorStateMatcher();
 
@@ -21,7 +19,7 @@ export class LoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[a-zA-Z0-9@_]{6,20}$/),
+      Validators.minLength(6),
     ]),
   });
 
@@ -29,28 +27,22 @@ export class LoginComponent {
     private _auth: AuthService,
     private router: Router,
     private toastr: ToastrService
-  ){
+  ) {}
 
-  }
-
-  submit(){
-
+  submit() {
     if (this.loginForm.valid) {
-      this._auth.onLogin(this.loginForm.value as LoginRequest).subscribe({
+      this._auth.onLogin(this.loginForm).subscribe({
         next: (res) => {
-          console.log(res);
-          localStorage.setItem('userToken', res.token);
+          localStorage.setItem('userToken', res.data.accessToken);
           this._auth.getUserData();
         },
-        error: (err) => {
-          this.toastr.error(err.error.message);
-        },
         complete: () => {
-          // here we will add instance from the toaster success
-          this.toastr.success('Success', 'Login succesfully');
-          this.router.navigate(['/dashboard']); // go to dashboard
+          this.toastr.success('Login successfully', 'Success');
+          this.router.navigate(['/dashboard']);
         },
       });
+    } else {
+      this.loginForm.markAllAsTouched();
     }
   }
 }

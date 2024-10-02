@@ -12,7 +12,7 @@ export class SpinnerService {
   busy() {
     this.busyRequestCount++;
     this.spinnerService.show(undefined, {
-      type: 'square-jelly-box',
+      type: 'ball-clip-rotate-pulse',
       bdColor: 'rgba(0, 0, 0, 0.8)',
       color: '#fff',
       size: 'default',

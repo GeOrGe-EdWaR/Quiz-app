@@ -1,141 +1,187 @@
-<form [formGroup]="registerForm" class="form row mx-0">
-  <div class="col-md-6 mb-3">
-    <mat-label>Your first name</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <input
-        matInput
-        placeholder="Type your first name"
-        name="first_name"
-        formControlName="first_name"
-      />
-      <mat-icon matPrefix>person</mat-icon>
-    </mat-form-field>
-    <div
-      class="position-relative error-text"
-      *ngIf="
-        registerForm.get('first_name')?.invalid &&
-        registerForm.get('first_name')?.touched
-      "
-    >
-      <small *ngIf="registerForm.get('first_name')?.hasError('required')">
-        First name is required
-      </small>
-    </div>
-  </div>
+<section>
+  <div class="container">
+    <h3 class="quaternary-color">
+      Create your account and start using QuizWiz!
+    </h3>
 
-  <div class="col-md-6 mb-3">
-    <mat-label>Your last name</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <input
-        matInput
-        placeholder="Type your last name"
-        name="last_name"
-        formControlName="last_name"
-      />
-      <mat-icon matPrefix>person</mat-icon>
-    </mat-form-field>
-    <div
-      class="position-relative error-text"
-      *ngIf="
-        registerForm.get('last_name')?.invalid &&
-        registerForm.get('last_name')?.touched
-      "
-    >
-      <small *ngIf="registerForm.get('last_name')?.hasError('required')">
-        Last name is required
-      </small>
-    </div>
-  </div>
-
-  <div class="col-md-12 mb-3">
-    <mat-label>Your email</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <input
-        matInput
-        placeholder="Type your email"
-        name="email"
-        formControlName="email"
-      />
-      <mat-icon matPrefix>email</mat-icon>
-    </mat-form-field>
-    <div
-      class="position-relative error-text"
-      *ngIf="
-        registerForm.get('email')?.invalid && registerForm.get('email')?.touched
-      "
-    >
-      <small *ngIf="registerForm.get('email')?.hasError('required')">
-        Email is required
-      </small>
-      <small *ngIf="registerForm.get('email')?.hasError('email')">
-        Invalid email format
-      </small>
-    </div>
-  </div>
-
-  <div class="col-md-12 mb-3">
-    <mat-label>Your role</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <mat-select
-        placeholder="Select your role"
-        name="role"
-        formControlName="role"
+    <div class="my-4 d-flex gap-5">
+      <span
+        class="sign-icon"
+        routerLink="/auth/login"
+        routerLinkActive="active"
       >
-        <mat-option *ngFor="let role of rolesList" [value]="role.value">{{
-          role.label
-        }}</mat-option>
-      </mat-select>
-
-      <mat-icon matPrefix>supervisor_account</mat-icon>
-    </mat-form-field>
-    <div
-      class="position-relative error-text"
-      *ngIf="
-        registerForm.get('role')?.invalid && registerForm.get('role')?.touched
-      "
-    >
-      <small *ngIf="registerForm.get('role')?.hasError('required')">
-        Role is required
-      </small>
-    </div>
-  </div>
-
-  <div class="col-md-12 mb-4">
-    <mat-label>Your password</mat-label>
-    <mat-form-field appearance="outline" class="w-100">
-      <input
-        matInput
-        placeholder="Type your password"
-        name="password"
-        formControlName="password"
-        [type]="showPassword ? 'text' : 'password'"
-      />
-      <mat-icon matPrefix (click)="showPassword = !showPassword">
-        {{ !showPassword ? "visibility_off" : "visibility" }}</mat-icon
+        <mat-icon>person</mat-icon>
+      </span>
+      <span
+        class="sign-icon"
+        routerLink="/auth/register"
+        routerLinkActive="active"
       >
-    </mat-form-field>
-    <div
-      class="position-relative error-text"
-      *ngIf="
-        registerForm.get('password')?.invalid &&
-        registerForm.get('password')?.touched
-      "
-    >
-      <small *ngIf="registerForm.get('password')?.hasError('required')">
-        Password is required
-      </small>
+        <mat-icon>person_add</mat-icon>
+      </span>
     </div>
-  </div>
 
-  <div class="col-md-12">
-    <a
-      mat-fab
-      extended
-      class="rounded-3 bg-white text-dark fw-bold"
-      (click)="submit()"
-    >
-      Sign Up
-      <mat-icon class="bg-dark rounded-circle fs-12">check</mat-icon>
-    </a>
+    <form [formGroup]="registerForm" class="form row">
+      <div class="col-md-6 mb-3">
+        <mat-form-field
+          appearance="outline"
+          class="w-100"
+          hideRequiredMarker="true"
+        >
+          <mat-label>First name</mat-label>
+          <input
+            matInput
+            placeholder="Type First name"
+            name="first_name"
+            formControlName="first_name"
+          />
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error
+            *ngIf="
+              registerForm.get('first_name')?.invalid &&
+              registerForm.get('first_name')?.touched
+            "
+          >
+            <span *ngIf="registerForm.get('first_name')?.hasError('required')">
+              First name is required
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <mat-form-field
+          appearance="outline"
+          class="w-100"
+          hideRequiredMarker="true"
+        >
+          <mat-label>Last name</mat-label>
+          <input
+            matInput
+            placeholder="Type last name"
+            name="last_name"
+            formControlName="last_name"
+          />
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error
+            *ngIf="
+              registerForm.get('last_name')?.invalid &&
+              registerForm.get('last_name')?.touched
+            "
+          >
+            <span *ngIf="registerForm.get('last_name')?.hasError('required')">
+              Last name is required
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12 mb-3">
+        <mat-form-field
+          appearance="outline"
+          class="w-100"
+          hideRequiredMarker="true"
+        >
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Type email"
+            name="email"
+            formControlName="email"
+          />
+          <mat-icon matPrefix>email</mat-icon>
+          <mat-error
+            *ngIf="
+              registerForm.get('email')?.invalid &&
+              registerForm.get('email')?.touched
+            "
+          >
+            <span *ngIf="registerForm.get('email')?.hasError('required')">
+              Email is required
+            </span>
+            <span *ngIf="registerForm.get('email')?.hasError('email')">
+              Invalid email format
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12 mb-3">
+        <mat-form-field
+          appearance="outline"
+          class="w-100"
+          hideRequiredMarker="true"
+        >
+          <mat-label>Role</mat-label>
+          <mat-select
+            placeholder="Select role"
+            name="role"
+            formControlName="role"
+          >
+            <mat-option *ngFor="let role of rolesList" [value]="role.value">{{
+              role.label
+            }}</mat-option>
+          </mat-select>
+
+          <mat-icon matPrefix>supervisor_account</mat-icon>
+          <mat-error
+            *ngIf="
+              registerForm.get('role')?.invalid &&
+              registerForm.get('role')?.touched
+            "
+          >
+            <span *ngIf="registerForm.get('role')?.hasError('required')">
+              Role is required
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12 mb-4">
+        <mat-form-field
+          appearance="outline"
+          class="w-100"
+          hideRequiredMarker="true"
+        >
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Type password"
+            name="password"
+            formControlName="password"
+            [type]="showPassword ? 'text' : 'password'"
+          />
+          <mat-icon matPrefix>key</mat-icon>
+          <mat-icon matSuffix (click)="showPassword = !showPassword">
+            {{ !showPassword ? "visibility_off" : "visibility" }}</mat-icon
+          >
+          <mat-error
+            *ngIf="
+              registerForm.get('password')?.invalid &&
+              registerForm.get('password')?.touched
+            "
+          >
+            <span *ngIf="registerForm.get('password')?.hasError('required')">
+              Password is required
+            </span>
+            <span *ngIf="registerForm.get('password')?.hasError('minlength')">
+              Password must be at least 6 characters.
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12">
+        <a
+          mat-fab
+          extended
+          class="rounded-3 bg-white text-dark fw-bold"
+          (click)="submit()"
+        >
+          Sign Up
+          <mat-icon class="bg-dark rounded-circle fs-12">check</mat-icon>
+        </a>
+      </div>
+    </form>
   </div>
-</form>
+</section>
