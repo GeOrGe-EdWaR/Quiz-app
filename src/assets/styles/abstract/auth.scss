@@ -1,6 +1,8 @@
 @import "variables.scss";
 
 .auth {
+
+
   background: $ternary-color;
 
   .sign-icon {
@@ -46,4 +48,19 @@
       height: 100%;
     }
   }
+    h2 {
+    color: #7cb342;
+  }
+
+  div {
+    span {
+
+      a {
+        color: #7cb342;
+
+      }
+    }
+
+  }
+
 }

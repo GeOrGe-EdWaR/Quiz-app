@@ -6,12 +6,14 @@ import { Observable } from 'rxjs';
 
 import { LoginResponse } from '../interfaces/login-response';
 import { RegisterResponse } from '../interfaces/register-response';
+import { IforgetPass, IresetPass } from '../interfaces/decode';
 import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  
   role: any = '';
   url = 'auth/';
 
@@ -50,5 +52,13 @@ export class AuthService {
       this.url + 'register',
       registerForm.value
     );
+  }
+
+   onForgetPass(forgetPassForm: IforgetPass): Observable<any> {
+    return this.httpClient.post(`${this.url}forgot-password`, forgetPassForm)
+  }
+
+  onResetPass(resetPassForm: IresetPass): Observable<any> {
+    return this.httpClient.post(`${this.url}reset-password`, resetPassForm)
   }
 }
