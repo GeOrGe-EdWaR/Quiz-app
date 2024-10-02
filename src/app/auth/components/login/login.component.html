@@ -81,7 +81,9 @@
             >
               Password is required
             </ng-container>
-            <ng-container *ngIf="loginForm.controls.password.errors['minlength']">
+            <ng-container
+              *ngIf="loginForm.controls.password.errors['minlength']"
+            >
               Password must be at least 6 characters.
             </ng-container>
           </mat-error>
