@@ -7,56 +7,40 @@ import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
-  styleUrls: ['./forget-password.component.scss']
+  styleUrls: ['./forget-password.component.scss'],
 })
 export class ForgetPasswordComponent implements OnInit {
-
-
-
   // decleration
 
   // -------------------
 
   constructor(
-
     private _AuthService: AuthService,
     private _Toastr: ToastrService,
-    private _Router: Router,
+    private _Router: Router
+  ) {}
 
-
-  ) { }
-
-
-  ngOnInit(): void {
-
-  }
-
+  ngOnInit(): void {}
 
   // --------------------
 
   forgetPassForm = new FormGroup({
-    email: new FormControl(null, [Validators.email, Validators.required])
-  })
-
+    email: new FormControl(null, [Validators.email, Validators.required]),
+  });
 
   forgetPass(forgetPassForm: FormGroup) {
-
     this._AuthService.onForgetPass(forgetPassForm.value).subscribe({
       next: (resp) => {
-        this._Toastr.success('verification code has been sent to your email successfully', 'success');
+        this._Toastr.success(
+          'verification code has been sent to your email successfully',
+          'success'
+        );
         this._Router.navigate(['/auth/resetPassword']);
       },
-      error: (err) => {
-        this._Toastr.error('email is not valid', 'error');
-        console.log(err);
-
-      }
-    })
+    });
   }
 
   get email() {
     return this.forgetPassForm.get('email');
   }
-
-
 }

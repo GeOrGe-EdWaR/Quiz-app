@@ -63,11 +63,6 @@ export class ResetPasswordComponent implements OnInit {
         this._Toastr.success('password has been reset successfully', 'success');
         this._Router.navigate(['/auth/login']);
       },
-      error: (err) => {
-        this._Toastr.error('rest password form is not valid', 'error');
-        console.log(err);
-
-      }
     })
   }
 
