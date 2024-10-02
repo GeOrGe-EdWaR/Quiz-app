@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { LoginRequest } from '../interfaces/login-request';
 import { jwtDecode } from 'jwt-decode';
 
