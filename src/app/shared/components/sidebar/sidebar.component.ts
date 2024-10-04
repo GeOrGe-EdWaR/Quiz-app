@@ -52,8 +52,8 @@ export class SidebarComponent {
     },
   ];
 
-  constructor( private _AuthService: AuthService ) {
-    this.list
+  constructor(private _AuthService: AuthService) {
+    this.list;
   }
 
   isInstructor() {

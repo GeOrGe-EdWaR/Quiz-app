@@ -21,8 +21,10 @@ import { SpinnerInterceptor } from './core/interceptors/spinner.interceptor';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    NgxSpinnerModule,
-    ToastrModule.forRoot(),
+    NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate-pulse' }),
+    ToastrModule.forRoot({
+      timeOut: 2000,
+    }),
   ],
   providers: [
     {
