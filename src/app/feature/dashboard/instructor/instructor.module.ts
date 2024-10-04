@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { InstructorRoutingModule } from './instructor-routing.module';
 import { InstructorComponent } from './instructor.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DashlistComponent } from './dashlist/dashlist.component';
 
 
 @NgModule({
   declarations: [
-    InstructorComponent
+    InstructorComponent,
+    DashlistComponent
   ],
   imports: [
     CommonModule,

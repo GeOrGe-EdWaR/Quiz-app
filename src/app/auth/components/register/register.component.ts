@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent {
   rolesList = [
     { value: 'Student', label: 'Student' },
-    { value: 'Student', label: 'Instructor' },
+    { value: 'Instructor', label: 'Instructor' },
   ];
 
   registerForm = new FormGroup({

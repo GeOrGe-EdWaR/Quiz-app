@@ -1,0 +1,58 @@
+<section>
+    <div class="container">
+      <div class="row mt-4 ">
+        <div class="col-md-5">
+          <div class="card border-2 ">
+            <h5>Upcoming 5 quizzes</h5>
+            <div class="card border-1 m-2">
+              <div class="row">
+                <div class="col-md-2"><img src="../../../assets/images/img.svg" class="img-color"></div>
+                <div class="col-md-10"></div>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card border-1 p-4">
+                <div class="d-flex justify-content-between">
+                     <h5>Top 5 Students </h5>
+                     <h6>all students <a routerLink="/dashboard/instructor/students"><i class="fa-solid fa-arrow-right" style="color: #c3ef81;"></i></a></h6>
+                    </div>
+                
+                 <!-- <div class="card cardsm border-1 m-2" *ngFor="let item of students; let i = index">
+                <div class="row" >
+                  <div class="col-md-2 image-container">
+                    <img [src]="images[i]" alt="Image" *ngIf="images[i]" />
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-9">
+                    <h4>{{ item.first_name }}</h4>
+                    <span>Class rank: {{ item.group.name }}</span> |
+                    <span >Average score: {{ item.avg_score }}</span>
+                  </div>
+                </div>
+              </div> -->
+           
+              <div class="card cardsm border-1 m-2" *ngFor="let item of students; let i = index">
+                <div class="row" style="height: 100%">
+                  <div class="col-md-2 image-container">
+                    <img [src]="images[i]" alt="Image" *ngIf="images[i]" class="quiz-image" />
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-9">
+                    <h4>{{ item.first_name }}</h4>
+                    <span class="small-text">Class rank: {{ item.group.name }}</span> |
+                    <span class="small-text">Average score: {{ item.avg_score }}</span>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+           
+              
+        </div>
+        
+      </div>
+    </div>
+  </section> 
