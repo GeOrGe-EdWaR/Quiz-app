@@ -17,6 +17,7 @@ $QuizApp-theme: mat.define-light-theme((color: (primary: $QuizApp-primary,
 html,
 body {
   height: 100%;
+  margin: 0
 }
 
 @import "assets/styles/layout.scss";

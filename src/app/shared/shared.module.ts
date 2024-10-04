@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -36,6 +37,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MatCardModule,
     MatListModule,
     MatToolbarModule,
+    MatTabsModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -51,6 +53,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MatCardModule,
     MatListModule,
     MatToolbarModule,
+    MatTabsModule,
 
     NavbarComponent,
     SidebarComponent,
