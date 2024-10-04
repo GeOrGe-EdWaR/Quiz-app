@@ -1,3 +1,4 @@
+import { DashlistComponent } from './dashlist/dashlist.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InstructorComponent } from './instructor.component';
@@ -7,6 +8,10 @@ const routes: Routes = [
     path: '',
     component: InstructorComponent,
     children: [
+      {
+        path: 'dashlist',
+      component:DashlistComponent
+      },
       {
         path: 'groups',
         loadChildren: () =>
