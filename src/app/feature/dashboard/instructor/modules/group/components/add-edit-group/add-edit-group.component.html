@@ -1,0 +1,31 @@
+<app-modal-action-header
+  title="Set up a new Group"
+  [isSubmit]="true"
+  [isClose]="true"
+  (onSubmit)="handleSubmit()"
+  (onClose)="handleClose()"
+></app-modal-action-header>
+
+<div class="p-5">
+  <mat-form-field
+    class="d-block mb-4 input-prefix-label-container"
+    appearance="outline"
+  >
+    <div matTextPrefix class="input-prefix-label">Group Name</div>
+    <input matInput type="text" />
+  </mat-form-field>
+
+  <mat-form-field
+    class="d-block input-prefix-label-container"
+    appearance="outline"
+  >
+    <div matTextPrefix class="input-prefix-label">List students</div>
+    <mat-select class="d-block input-prefix-label-container">
+      <mat-option
+        *ngFor="let student of studentsDropDown"
+        [value]="student._id"
+        >{{ student.first_name + " " + student.last_name }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+</div>

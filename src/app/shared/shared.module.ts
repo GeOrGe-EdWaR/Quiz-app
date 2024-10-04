@@ -18,8 +18,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ModalActionHeaderComponent } from './components/modal-action-header/modal-action-header.component';
 @NgModule({
-  declarations: [NavbarComponent, SidebarComponent],
+  declarations: [NavbarComponent, SidebarComponent, ModalActionHeaderComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -57,6 +58,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 
     NavbarComponent,
     SidebarComponent,
+    ModalActionHeaderComponent,
   ],
 })
 export class SharedModule {}

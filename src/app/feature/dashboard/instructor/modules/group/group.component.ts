@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
+
+import { MatDialog } from '@angular/material/dialog';
+
 import { GroupService } from './services/group.service';
+
 import { Group } from './interfaces/group';
+import { AddEditGroupComponent } from './components/add-edit-group/add-edit-group.component';
 
 @Component({
   selector: 'app-group',
@@ -10,7 +15,7 @@ import { Group } from './interfaces/group';
 export class GroupComponent {
   groups: Group[] = [];
 
-  constructor(private groupService: GroupService) {}
+  constructor(private groupService: GroupService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.AllGroups();
@@ -24,7 +29,11 @@ export class GroupComponent {
     });
   }
 
-  AddGroup() {}
+  addGroup() {
+    this.dialog.open(AddEditGroupComponent, {
+      minWidth: '50%',
+    });
+  }
 
   editGroup(group: Group) {}
 
