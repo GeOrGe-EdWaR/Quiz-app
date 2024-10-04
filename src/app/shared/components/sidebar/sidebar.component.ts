@@ -11,7 +11,7 @@ export class SidebarComponent {
     {
       label: 'Dashboard',
       icon: 'roofing',
-      link: '/dashboard',
+      link: '/dashboard/instructor/dashlist',
       active: true,
     },
     {
