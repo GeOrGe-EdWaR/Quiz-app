@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DashlistService } from '../../../services/dashlist.service';
-import { Quiz } from '../../../interfaces/quiz';
+import { DashlistService } from '../../../../services/dashlist.service';
+import { Quiz } from '../../../../interfaces/quiz';
 import { GroupService } from './../group/services/group.service';
 
 @Component({

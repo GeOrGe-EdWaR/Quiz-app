@@ -46,13 +46,13 @@ export class StudentComponent {
 
   editStudent(student: Student) {}
 
-  AddTOGroup() {}
+  AddTOGroup(student: Student) {}
 
   getStudentById(id: string) {}
 
   deleteStudentDialog(student: Student) {
     const dialogRef = this.dialog.open(DeleteComponent, {
-      width: 'w-50',
+      minWidth: '50%',
       data: {
         title: 'Delete Student',
         message: `Are you sure you want to delete student ${student.first_name}?`,
