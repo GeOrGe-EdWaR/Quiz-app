@@ -28,6 +28,7 @@ export class GroupComponent {
     this.groupService.getAllGroups().subscribe({
       next: (res) => {
         this.groups = res;
+        console.log(res);
       },
     });
   }

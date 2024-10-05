@@ -1,17 +1,17 @@
 <section>
   <div class="container">
     <div class="d-flex align-items-center justify-content-end">
-      <div class="d-flex align-items-center pointer py-2 px-3 btn-border gap-1">
+      <div class="d-flex align-items-center pointer py-2 px-3 btn-border gap-1" (click)="addGroup()">
         <mat-icon matSuffix class="toggle-icon ternary-color"
           >add_circle</mat-icon
         >
-        <p class="m-0 ternary-color" (click)="addGroup()">Add Group</p>
+        <p class="m-0 ternary-color">Add Group</p>
       </div>
     </div>
 
-    <div class="p-3 mt-3 btn-border">
-      <h5 class="mb-5">Groups List</h5>
-      <div class="row">
+    <div class="p-3 mt-3 border">
+      <h5 class="mb-4">Groups List</h5>
+      <div class="row g-2 mx-0">
         <ng-container *ngFor="let group of groups">
           <div class="col-6">
             <div

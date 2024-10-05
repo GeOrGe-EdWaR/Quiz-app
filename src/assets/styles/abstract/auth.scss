@@ -2,7 +2,6 @@
 
 .auth {
 
-
   background: $ternary-color;
 
   .sign-icon {
@@ -47,7 +46,15 @@
       place-items: center;
       height: 100%;
     }
-  
+
+  }
+
+  .custom-fab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 10px 15px;
   }
 
 }
