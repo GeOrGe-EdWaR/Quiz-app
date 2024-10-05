@@ -17,5 +17,13 @@ export class StudentService {
 
   getAllStudentsWithoutGroup(): Observable<Student[]> {
     return this.http.get<Student[]>(this.url + '/without-group');
+
+  }
+
+  // getStudentById(id: string): Observable<Student> {
+  //   return this.http.get<Student>(this.url + '/' + id);
+  // }
+  deleteStudent(id: string): Observable<any> {
+    return this.http.delete<any>(this.url + '/' + id);
   }
 }

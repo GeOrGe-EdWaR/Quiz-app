@@ -21,4 +21,7 @@ export class GroupService {
   getStudentsWithoutGroups(): Observable<GroupStudent[]> {
     return this.http.get<GroupStudent[]>('student/without-group');
   }
+  deleteGroup(id: string): Observable<any> {
+    return this.http.delete<GroupStudent[]>(this.url + '/' + id);
+  }
 }

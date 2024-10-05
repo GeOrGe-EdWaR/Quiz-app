@@ -1,10 +1,9 @@
-@import 'variables.scss';
+@import "variables.scss";
 
 * {
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
 }
-
 
 .pointer {
   cursor: pointer;
@@ -14,9 +13,13 @@ a {
   color: inherit !important;
   text-decoration: none !important;
 }
+.btn-border {
+  border: none;
+}
 
 mat-icon {
   display: flex !important;
+  border: none;
 }
 
 .bg-main-color {
@@ -69,7 +72,4 @@ mat-icon {
   border-radius: $border-radius-8;
 }
 
-.btn-border {
-  border: 1px solid $gray-color;
-  border-radius: $border-radius-15;
-}
+
