@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -28,19 +29,20 @@ export class RegisterComponent {
 
   showPassword = false;
 
-  constructor(private _auth: AuthService, private _toastr: ToastrService) {}
+  constructor(
+    private _auth: AuthService,
+    private _toastr: ToastrService,
+    private router: Router
+  ) {}
 
   submit(): void {
     if (this.registerForm.valid) {
-      this._auth
-        .register(this.registerForm)
-        .subscribe({
-          next: (data) => {
-            this._toastr.success( 'Account is created successfully' );
-            console.log(data);
-            
-          },
-        });
+      this._auth.register(this.registerForm).subscribe({
+        next: (data) => {
+          this._toastr.success('Account is created successfully');
+          this.router.navigate(['/auth/login']);
+        },
+      });
     } else {
       this.registerForm.markAllAsTouched();
     }

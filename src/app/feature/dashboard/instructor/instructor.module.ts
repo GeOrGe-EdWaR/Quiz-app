@@ -4,18 +4,9 @@ import { CommonModule } from '@angular/common';
 import { InstructorRoutingModule } from './instructor-routing.module';
 import { InstructorComponent } from './instructor.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DashlistComponent } from './dashlist/dashlist.component';
-
 
 @NgModule({
-  declarations: [
-    InstructorComponent,
-    DashlistComponent
-  ],
-  imports: [
-    CommonModule,
-    InstructorRoutingModule,
-    SharedModule
-  ]
+  declarations: [InstructorComponent,],
+  imports: [CommonModule, InstructorRoutingModule, SharedModule],
 })
-export class InstructorModule { }
+export class InstructorModule {}

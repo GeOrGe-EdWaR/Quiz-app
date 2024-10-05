@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { instructorGuard } from 'src/app/core/guards/instructor/instructor.guard';
 import { studentGuard } from 'src/app/core/guards/student/student.guard';
+import { DashlistComponent } from './components/dashlist/dashlist.component';
 
 const routes: Routes = [
   {
@@ -10,8 +11,17 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'dashboardList',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboardList',
+        component: DashlistComponent,
+      },
+      {
         path: 'instructor',
-        canActivate:[instructorGuard],
+        canActivate: [instructorGuard],
         loadChildren: () =>
           import('./instructor/instructor.module').then(
             (m) => m.InstructorModule
@@ -19,7 +29,7 @@ const routes: Routes = [
       },
       {
         path: 'student',
-        canActivate:[studentGuard],
+        canActivate: [studentGuard],
         loadChildren: () =>
           import('./student/student.module').then((m) => m.StudentModule),
       },

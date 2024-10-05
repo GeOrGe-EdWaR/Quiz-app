@@ -31,7 +31,6 @@
   
   .quiz-image {
     height: 100%; /* Make the image take the full height of the container */
-    width: auto; /* Maintain aspect ratio */
     object-fit: cover; /* Ensures the image covers the container */
     border-radius: 4px; /* Optional for rounded corners */
   }
