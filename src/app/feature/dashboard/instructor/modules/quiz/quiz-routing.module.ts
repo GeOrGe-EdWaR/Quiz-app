@@ -8,4 +8,6 @@ const routes: Routes = [{ path: '', component: QuizComponent }];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class QuizRoutingModule { }
+export class QuizRoutingModule {
+ 
+ }

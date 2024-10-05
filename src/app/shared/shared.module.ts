@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -39,6 +40,7 @@ import { ModalActionHeaderComponent } from './components/modal-action-header/mod
     MatListModule,
     MatToolbarModule,
     MatTabsModule,
+    MatTableModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -55,6 +57,7 @@ import { ModalActionHeaderComponent } from './components/modal-action-header/mod
     MatListModule,
     MatToolbarModule,
     MatTabsModule,
+    MatTableModule,
 
     NavbarComponent,
     SidebarComponent,

@@ -38,7 +38,7 @@ export class LoginComponent {
         },
         complete: () => {
           this.toastr.success('Login successfully', 'Success');
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard/instructor/dashlist']);
         },
       });
     } else {

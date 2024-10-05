@@ -4,6 +4,7 @@
     .mdc-text-field__input,
   .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-floating-label {
     color: $main-color;
+    
   }
 
   .mdc-text-field--outlined:not(.mdc-text-field--disabled)
@@ -35,6 +36,7 @@
     .mdc-notched-outline
     .mdc-notched-outline__trailing {
     border-color: $quaternary-color;
+    
   }
 
   .mat-icon {
