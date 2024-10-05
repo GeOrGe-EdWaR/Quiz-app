@@ -44,46 +44,34 @@ export class StudentComponent {
     });
   }
 
-  AddStudent() {}
+  editStudent(student: Student) {}
 
-  editStudent(Student: Student) {}
+  AddTOGroup() {}
 
-  deleteStudentDialog(Student: Student) {
+  getStudentById(id: string) {}
+
+  deleteStudentDialog(student: Student) {
     const dialogRef = this.dialog.open(DeleteComponent, {
-      width: '300px',
+      width: 'w-50',
       data: {
         title: 'Delete Student',
-        message: 'Are you sure you want to delete this student?',
-        _id: Student._id,
-        // group: this.groups.name,
+        message: `Are you sure you want to delete student ${student.first_name}?`,
+        _id: student._id,
       },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // User confirmed deletion
-        console.log('Delete confirmed');
         this.deleteStudent(result._id);
       } else {
-        // User canceled deletion
         console.log('Delete canceled');
       }
     });
   }
 
-  AddTOGroup() {}
-  getStudentById(id: string) {}
-
   deleteStudent(id: string) {
     this.studentService.deleteStudent(id).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        console.log('complete');
+      next: () => {
         this.toastr.success('Student deleted successfully', 'Success');
         this.AllStudents();
       },

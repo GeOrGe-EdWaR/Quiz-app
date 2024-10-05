@@ -13,13 +13,14 @@ a {
   color: inherit !important;
   text-decoration: none !important;
 }
+
 .btn-border {
-  border: none;
+  border: 1px solid $gray-color;
+  border-radius: $border-radius-8;
 }
 
 mat-icon {
   display: flex !important;
-  border: none;
 }
 
 .bg-main-color {
