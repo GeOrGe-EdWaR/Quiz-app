@@ -6,18 +6,20 @@
 
     <div class="my-4 d-flex gap-5">
       <span
-        class="sign-icon"
+        class="sign-icon p-2"
         routerLink="/auth/login"
         routerLinkActive="active"
       >
         <mat-icon>person</mat-icon>
+        <p class="main-color m-0">Sign In</p>
       </span>
       <span
-        class="sign-icon"
+        class="sign-icon p-2"
         routerLink="/auth/register"
         routerLinkActive="active"
       >
         <mat-icon>person_add</mat-icon>
+        <p class="main-color m-0">Sign Up</p>
       </span>
     </div>
 
@@ -153,14 +155,11 @@
 
       <div class="col-md-12">
         <a
-          mat-fab
-          extended
-          class="rounded-3 bg-white text-dark fw-bold btn-effect"
+          class="rounded-3 bg-white text-dark fw-bold custom-fab"
           (click)="submit()"
         >
-        <mat-icon class="bg-dark rounded-circle fs-12">check</mat-icon>
-          Sign Up
-          
+          <span> Sign Up</span>
+          <mat-icon class="bg-dark rounded-circle fs-12">check</mat-icon>
         </a>
       </div>
     </form>

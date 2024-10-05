@@ -15,6 +15,9 @@ import { AddEditGroupComponent } from './components/add-edit-group/add-edit-grou
 export class GroupComponent {
   groups: Group[] = [];
 
+  addDialogRef: any;
+  editDialogRef: any;
+
   constructor(private groupService: GroupService, public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -25,17 +28,31 @@ export class GroupComponent {
     this.groupService.getAllGroups().subscribe({
       next: (res) => {
         this.groups = res;
+        console.log(res);
       },
     });
   }
 
   addGroup() {
-    this.dialog.open(AddEditGroupComponent, {
+    this.addDialogRef = this.dialog.open(AddEditGroupComponent, {
       minWidth: '50%',
+    });
+
+    this.addDialogRef.afterClosed().subscribe(() => {
+      this.AllGroups();
     });
   }
 
-  editGroup(group: Group) {}
+  editGroup(group: Group) {
+    this.editDialogRef = this.dialog.open(AddEditGroupComponent, {
+      minWidth: '50%',
+      data: { id: group._id },
+    });
+
+    this.editDialogRef.afterClosed().subscribe(() => {
+      this.AllGroups();
+    });
+  }
 
   deleteGroup(group: Group) {}
 }

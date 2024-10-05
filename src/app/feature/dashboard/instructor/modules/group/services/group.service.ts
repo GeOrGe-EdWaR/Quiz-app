@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Group } from '../interfaces/group';
 import { GroupStudent } from '../interfaces/group-student';
+import { AddEditGroupRequest } from '../interfaces/add-edit-group-request';
 
 @Injectable({
   providedIn: 'root',
@@ -20,5 +21,17 @@ export class GroupService {
 
   getStudentsWithoutGroups(): Observable<GroupStudent[]> {
     return this.http.get<GroupStudent[]>('student/without-group');
+  }
+
+  addGroup(formData: AddEditGroupRequest): Observable<any> {
+    return this.http.post(this.url, formData);
+  }
+
+  editGroup(groupId: string, formData: AddEditGroupRequest): Observable<any> {
+    return this.http.put(this.url + '/' + groupId, formData);
+  }
+
+  getGroupById(groupId: string): Observable<any> {
+    return this.http.get(this.url + '/' + groupId);
   }
 }
