@@ -30,4 +30,8 @@ export class GroupService {
   editGroup(groupId: string, formData: AddEditGroupRequest): Observable<any> {
     return this.http.put(this.url + '/' + groupId, formData);
   }
+
+  getGroupById(groupId: string): Observable<any> {
+    return this.http.get(this.url + '/' + groupId);
+  }
 }

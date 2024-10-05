@@ -18,6 +18,7 @@ import { Group } from '../../interfaces/group';
 })
 export class AddEditGroupComponent {
   groupId: string = '';
+  initialData: any;
 
   studentsDropDown: GroupStudent[] = [];
 
@@ -28,15 +29,28 @@ export class AddEditGroupComponent {
 
   constructor(
     public dialogRef: MatDialogRef<AddEditGroupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { group: any },
+    @Inject(MAT_DIALOG_DATA) public data: { id: string },
     private _group: GroupService,
     private _toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
-    this.getStudentsDropDown();
+    this.groupId = this.data?.id;
 
-    this.groupId = this.data?.group?._id;
+    if (this.groupId) {
+      this.getGroupById();
+    } else {
+      this.getStudentsDropDown();
+    }
+  }
+
+  getGroupById(): void {
+    this._group.getGroupById(this.groupId).subscribe({
+      next: (response) => {
+        this.initialData = response;
+        this.getStudentsDropDown();
+      },
+    });
   }
 
   getStudentsDropDown(): void {
@@ -45,6 +59,11 @@ export class AddEditGroupComponent {
         this.studentsDropDown = data;
 
         if (this.groupId) {
+          this.studentsDropDown = [
+            ...this.studentsDropDown,
+            ...this.initialData.students,
+          ];
+
           this.initGroup();
         }
       },
@@ -52,10 +71,9 @@ export class AddEditGroupComponent {
   }
 
   initGroup(): void {
-    console.log('this.data.group', this.data.group);
     this.groupForm.patchValue({
-      name: this.data.group.name,
-      students: this.data.group.students,
+      name: this.initialData.name,
+      students: this.initialData.students.map((student: any) => student._id),
     });
   }
 

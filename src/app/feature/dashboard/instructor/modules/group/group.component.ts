@@ -45,7 +45,7 @@ export class GroupComponent {
   editGroup(group: Group) {
     this.editDialogRef = this.dialog.open(AddEditGroupComponent, {
       minWidth: '50%',
-      data: { id: group._id, group: group },
+      data: { id: group._id },
     });
 
     this.editDialogRef.afterClosed().subscribe(() => {
