@@ -33,7 +33,7 @@ export class GroupService {
     return this.http.put(this.url + '/' + groupId, formData);
   }
 
-  getGroupById(groupId: string): Observable<any> {
-    return this.http.get(this.url + '/' + groupId);
+  getGroupById(groupId: string): Observable<Group> {
+    return this.http.get<Group>(this.url + '/' + groupId);
   }
 }
