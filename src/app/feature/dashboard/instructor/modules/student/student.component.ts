@@ -67,8 +67,6 @@ export class StudentComponent {
       } else {
         // User canceled deletion
         console.log('Delete canceled');
-        this.toastr.success('Student deleted successfully', 'Success');
-        this.AllStudents();
       }
     });
   }
@@ -86,6 +84,8 @@ export class StudentComponent {
       },
       complete: () => {
         console.log('complete');
+        this.toastr.success('Student deleted successfully', 'Success');
+        this.AllStudents();
       },
     });
   }
