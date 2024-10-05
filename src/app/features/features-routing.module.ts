@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
+import { FeaturesComponent } from './features.component';
 import { instructorGuard } from 'src/app/core/guards/instructor/instructor.guard';
 import { studentGuard } from 'src/app/core/guards/student/student.guard';
 import { DashlistComponent } from './components/dashlist/dashlist.component';
@@ -8,7 +8,7 @@ import { DashlistComponent } from './components/dashlist/dashlist.component';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: FeaturesComponent,
     children: [
       {
         path: '',
@@ -23,7 +23,7 @@ const routes: Routes = [
         path: 'instructor',
         canActivate: [instructorGuard],
         loadChildren: () =>
-          import('./instructor/instructor.module').then(
+          import('./modules/instructor/instructor.module').then(
             (m) => m.InstructorModule
           ),
       },
@@ -31,7 +31,7 @@ const routes: Routes = [
         path: 'student',
         canActivate: [studentGuard],
         loadChildren: () =>
-          import('./student/student.module').then((m) => m.StudentModule),
+          import('./modules/student/student.module').then((m) => m.StudentModule),
       },
     ],
   },
@@ -41,4 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule {}
+export class FeaturesRoutingModule {}

@@ -1,4 +1,5 @@
-import { Group } from '../../group/interfaces/group';
+import { Group } from "../../group/interfaces/group";
+
 
 export interface Student {
   _id: string;

@@ -17,7 +17,6 @@ export class StudentService {
 
   getAllStudentsWithoutGroup(): Observable<Student[]> {
     return this.http.get<Student[]>(this.url + '/without-group');
-
   }
 
   // getStudentById(id: string): Observable<Student> {
@@ -25,5 +24,10 @@ export class StudentService {
   // }
   deleteStudent(id: string): Observable<any> {
     return this.http.delete<any>(this.url + '/' + id);
+  }
+
+  AddToGroup(studentId: string, groupId: string): Observable<any> {
+    const apiUrl = `${this.url}/${studentId}/${groupId}`;
+    return this.http.get(apiUrl);
   }
 }
