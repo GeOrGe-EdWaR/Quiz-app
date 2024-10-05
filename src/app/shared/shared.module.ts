@@ -20,8 +20,14 @@ import {MatTableModule} from '@angular/material/table';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ModalActionHeaderComponent } from './components/modal-action-header/modal-action-header.component';
+import { DeleteComponent } from './components/delete/delete.component';
 @NgModule({
-  declarations: [NavbarComponent, SidebarComponent, ModalActionHeaderComponent],
+  declarations: [
+    NavbarComponent,
+    SidebarComponent,
+    ModalActionHeaderComponent,
+    DeleteComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -45,7 +51,6 @@ import { ModalActionHeaderComponent } from './components/modal-action-header/mod
   exports: [
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
