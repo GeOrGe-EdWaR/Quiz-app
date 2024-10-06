@@ -1,0 +1,15 @@
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h5 class="mb-0">Bank of Questions</h5>
+  <div class="d-flex align-items-center pointer py-2 px-3 btn-border gap-1" (click)="onAddAction()">
+    <mat-icon matSuffix class="toggle-icon ternary-color">add_circle</mat-icon>
+    <p class="m-0 ternary-color">Add Question</p>
+  </div>
+</div>
+
+<app-list
+  [headers]="columns"
+  [data]="questionsList"
+  (handleViewEvent)="onViewAction($event)"
+  (handleEditEvent)="onEditAction($event)"
+  (handleDeleteEvent)="onDeleteAction($event)"
+></app-list>

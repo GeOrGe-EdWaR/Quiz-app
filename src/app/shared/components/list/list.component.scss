@@ -1,0 +1,48 @@
+.table {
+  box-shadow: none;
+  border-collapse: separate;
+  border-spacing: 5px;
+
+  th {
+    background-color: #0d1321;
+    color: white;
+
+    font-weight: 500;
+    font-family: Montserrat-Medium;
+
+    border: 1px solid rgba($color: #315951e5, $alpha: 0.9);
+
+    padding: 0 1rem !important;
+  }
+
+  tr {
+    vertical-align: middle;
+  }
+
+  td {
+    color: #000;
+
+    font-size: 15px;
+    font-weight: 500;
+    font-family: Montserrat;
+
+    padding: 0 1rem !important;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 133.54px;
+
+    border: 1px solid#00000033;
+
+    .mat-icon {
+      color: #fb7c19;
+      margin-inline-end: 10px;
+      cursor: pointer;
+    }
+
+    img {
+      border-radius: 8px;
+    }
+  }
+}
