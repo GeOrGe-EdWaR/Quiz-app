@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class StudentService {
   private url = 'student';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(this.url);
@@ -18,4 +18,11 @@ export class StudentService {
   getAllStudentsWithoutGroup(): Observable<Student[]> {
     return this.http.get<Student[]>(this.url + '/without-group');
   }
+
+  onEditStudent(groupId: any, StudentId: any): Observable<any> {
+
+    return this.http.post(`student${groupId}/${StudentId}`, StudentId)
+  }
+
+
 }
