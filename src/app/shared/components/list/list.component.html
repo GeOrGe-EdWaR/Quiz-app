@@ -87,21 +87,8 @@
       [class.odd]="odd"
     ></tr>
   </table>
-  <!-- 
-  <app-custom-paginator
-    #paginator
-    (pageChange)="handlePaginate($event)"
-    (pageSizeChange)="handlePaginationSizeChange($event)"
-    [length]="length"
-    [pageSize]="pageSize"
-    [showFirstLastButtons]="showFirstLastButtons"
-    [hidePageSize]="hidePageSize"
-    [pageNumber]="pageNumber"
-    [disabled]="disabled"
-  >
-  </app-custom-paginator> -->
 </div>
 
-<!-- <ng-container *ngIf="data && data.length === 0">
-  <app-empty-list></app-empty-list>
-</ng-container> -->
+<ng-container *ngIf="data && data.length === 0">
+  <app-no-data></app-no-data>
+</ng-container>

@@ -23,6 +23,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ModalActionHeaderComponent } from './components/modal-action-header/modal-action-header.component';
 import { DeleteComponent } from './components/delete/delete.component';
 import { ListComponent } from './components/list/list.component';
+import { NoDataComponent } from './components/no-data/no-data.component';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -30,6 +31,7 @@ import { ListComponent } from './components/list/list.component';
     ModalActionHeaderComponent,
     DeleteComponent,
     ListComponent,
+    NoDataComponent,
   ],
   imports: [
     CommonModule,
@@ -73,6 +75,7 @@ import { ListComponent } from './components/list/list.component';
     SidebarComponent,
     ModalActionHeaderComponent,
     ListComponent,
+    NoDataComponent,
   ],
 })
 export class SharedModule {}
