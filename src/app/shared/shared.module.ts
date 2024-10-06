@@ -24,6 +24,7 @@ import { ModalActionHeaderComponent } from './components/modal-action-header/mod
 import { DeleteComponent } from './components/delete/delete.component';
 import { ListComponent } from './components/list/list.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
+
 @NgModule({
   declarations: [
     NavbarComponent,
