@@ -1,0 +1,43 @@
+.img-color{
+    background: #FFEDDF;
+  
+}
+.cardsm{
+    height:100px; /* Set the desired height for the card */
+  }
+  
+  .image-container {
+    height: 100%; /* Ensure the container takes the full height */
+   
+  }
+  
+  .image-container img {
+    height: 100%; /* Make the image take the full height of the container */
+    width: auto; /* Maintain aspect ratio */
+     /* Optional: cover the area without distortion */
+  }
+
+
+  .card.cardsm {
+    height: 100px; /* Set the desired height for the card */
+  }
+  
+  .image-container {
+    height: 100%; /* Ensure the container takes the full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .quiz-image {
+    height: 100%; /* Make the image take the full height of the container */
+    object-fit: cover; /* Ensures the image covers the container */
+    border-radius: 4px; /* Optional for rounded corners */
+  }
+  
+  .small-text {
+    font-size: 12px; /* Set a smaller font size for the spans */
+  }
+  
+  
+  
