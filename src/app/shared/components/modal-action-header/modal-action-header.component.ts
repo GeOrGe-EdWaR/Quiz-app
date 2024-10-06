@@ -10,8 +10,8 @@ export class ModalActionHeaderComponent {
   @Output() onClose = new EventEmitter();
 
   @Input() title: string = '';
-  @Input() isSubmit: boolean = false;
-  @Input() isClose: boolean = false;
+  @Input() isSubmit: boolean = true;
+  @Input() isClose: boolean = true;
 
   submit(): void {
     this.onSubmit.emit();

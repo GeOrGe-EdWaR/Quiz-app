@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class StudentService {
   private url = 'student';
-
-  constructor(private http: HttpClient) { }
+  
+  constructor(private http: HttpClient) {}
 
   getAllStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(this.url);
