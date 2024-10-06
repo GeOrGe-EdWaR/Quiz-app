@@ -4,6 +4,8 @@ import { StudentService } from './services/student.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
 import { ToastrService } from 'ngx-toastr';
+import { GroupService } from './../group/services/group.service';
+import { Group } from '../group/interfaces/group';
 
 @Component({
   selector: 'app-student',
@@ -16,9 +18,12 @@ export class StudentComponent {
   }
   students: Student[] = [];
   studentsWithoutGroup: Student[] = [];
+  groups: Group[] = [];
+  studentFiltrationGroup: Student[] = [];
 
   constructor(
     private studentService: StudentService,
+    private groupService: GroupService,
     private dialog: MatDialog,
     private toastr: ToastrService
   ) {}
@@ -26,6 +31,7 @@ export class StudentComponent {
   ngOnInit() {
     this.AllStudents();
     this.AllStudentsWithoutGroup();
+    this.AllGroup();
   }
 
   AllStudents() {
@@ -40,6 +46,24 @@ export class StudentComponent {
     this.studentService.getAllStudentsWithoutGroup().subscribe({
       next: (res) => {
         this.studentsWithoutGroup = res;
+      },
+    });
+  }
+
+  AllGroup() {
+    this.groupService.getAllGroups().subscribe({
+      next: (res) => {
+        this.groups = res;
+      },
+    });
+  }
+
+  getGroupByID(groupID: string) {
+    this.groupService.getGroupById(groupID).subscribe({
+      next: (res) => {
+        this.studentFiltrationGroup = res.students;
+        console.log(this.studentFiltrationGroup);
+        
       },
     });
   }
