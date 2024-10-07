@@ -137,7 +137,7 @@ export class MaintainQuestionComponent {
       .subscribe({
         next: () => {
           this._toastr.success('Question is updated successfully', 'success');
-          this.dialogRef.close();
+          this.dialogRef.close(this.data);
         },
       });
   }
