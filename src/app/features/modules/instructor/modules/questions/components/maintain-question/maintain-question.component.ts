@@ -29,20 +29,9 @@ export class MaintainQuestionComponent {
     },
   ];
 
-  difficultyDropDown: { value: string; label: string }[] = [
-    {
-      value: 'hard',
-      label: 'Hard',
-    },
-    {
-      value: 'medium',
-      label: 'Medium',
-    },
-    {
-      value: 'easy',
-      label: 'Easy',
-    },
-  ];
+  difficultyDropDown: string[] = ['hard', 'medium', 'easy'];
+
+  answerDropDown: string[] = ['A', 'B', 'C', 'D'];
 
   questionForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
@@ -148,7 +137,7 @@ export class MaintainQuestionComponent {
       .subscribe({
         next: () => {
           this._toastr.success('Question is updated successfully', 'success');
-          this.dialogRef.close();
+          this.dialogRef.close(this.data);
         },
       });
   }
