@@ -29,20 +29,9 @@ export class MaintainQuestionComponent {
     },
   ];
 
-  difficultyDropDown: { value: string; label: string }[] = [
-    {
-      value: 'hard',
-      label: 'Hard',
-    },
-    {
-      value: 'medium',
-      label: 'Medium',
-    },
-    {
-      value: 'easy',
-      label: 'Easy',
-    },
-  ];
+  difficultyDropDown: string[] = ['hard', 'medium', 'easy'];
+
+  answerDropDown: string[] = ['A', 'B', 'C', 'D'];
 
   questionForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
