@@ -1,46 +1,38 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { StudentService } from '../../services/student.service';
+import { GroupService } from '../../../group/services/group.service';
+import { Group } from '../../../group/interfaces/group';
 
 @Component({
   selector: 'app-add-to-group',
   templateUrl: './add-to-group.component.html',
-  styleUrls: ['./add-to-group.component.scss']
+  styleUrls: ['./add-to-group.component.scss'],
 })
 export class AddToGroupComponent {
-
   selectValue: string = '';
-  groups: any[] = [];
+  groups: Group[] = [];
 
   constructor(
-    private _StudentService: StudentService,
+    private _groupService: GroupService,
     public dialogRef: MatDialogRef<AddToGroupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { studentId: string }
+    @Inject(MAT_DIALOG_DATA) public data: {}
   ) {
     this.getAllGroups();
   }
 
+  onSubmit() {
+    this.dialogRef.close(this.selectValue);
+  }
 
   onClose(): void {
     this.dialogRef.close();
   }
 
-
-  onSubmit() {
-    this.dialogRef.close({
-      studentId: this.data.studentId,
-      groupId: this.selectValue
-    });
-  }
-
   getAllGroups() {
-    this._StudentService.onGetAllGroups().subscribe({
-      next: (resp) => {
-        this.groups = resp;
+    this._groupService.getAllGroups().subscribe({
+      next: (res) => {
+        this.groups = res;
       },
-
     });
   }
-
-
 }

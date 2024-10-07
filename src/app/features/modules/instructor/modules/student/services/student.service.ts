@@ -30,4 +30,9 @@ export class StudentService {
     const apiUrl = `${this.url}/${studentId}/${groupId}`;
     return this.http.get(apiUrl);
   }
+  
+  updateStudentGroup(studentId: string, groupId: string): Observable<any> {
+    const apiUrl = `${this.url}/${studentId}/${groupId}`;
+    return this.http.put(apiUrl,{});
+  }
 }

@@ -6,6 +6,8 @@ import { DeleteComponent } from 'src/app/shared/components/delete/delete.compone
 import { ToastrService } from 'ngx-toastr';
 import { GroupService } from './../group/services/group.service';
 import { Group } from '../group/interfaces/group';
+import { AddToGroupComponent } from './components/add-to-group/add-to-group.component';
+import { UpdateComponent } from './components/update/update.component';
 
 @Component({
   selector: 'app-student',
@@ -13,9 +15,6 @@ import { Group } from '../group/interfaces/group';
   styleUrls: ['./student.component.scss'],
 })
 export class StudentComponent {
-  openDialog() {
-    throw new Error('Method not implemented.');
-  }
   students: Student[] = [];
   studentsWithoutGroup: Student[] = [];
   groups: Group[] = [];
@@ -25,7 +24,7 @@ export class StudentComponent {
     private studentService: StudentService,
     private groupService: GroupService,
     private dialog: MatDialog,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit() {
@@ -62,17 +61,48 @@ export class StudentComponent {
     this.groupService.getGroupById(groupID).subscribe({
       next: (res) => {
         this.studentFiltrationGroup = res.students;
-        console.log(this.studentFiltrationGroup);
-        
       },
     });
   }
 
-  editStudent(student: Student) {}
+  editStudent(student: Student, groupId?: string) {
+    const addDialogRef = this.dialog.open(UpdateComponent, {
+      minWidth: '50%',
+      data: { student, groupId },
+    });
+    addDialogRef.afterClosed().subscribe((groupID) => {
+      if (groupID) {
+        this.studentService.updateStudentGroup(student._id, groupID).subscribe({
+          next: () => {
+            this.toastr.success(
+              'Student group updated successfully',
+              'Success'
+            );
+            this.getGroupByID( groupId! );
+          },
+        });
+      }
+    });
+  }
 
-  AddTOGroup(student: Student) {}
-
-  getStudentById(id: string) {}
+  AddTOGroup(student: Student) {
+    const addDialogRef = this.dialog.open(AddToGroupComponent, {
+      minWidth: '50%',
+    });
+    addDialogRef.afterClosed().subscribe((groupID) => {
+      if (groupID) {
+        this.studentService.AddToGroup(student._id, groupID).subscribe({
+          next: () => {
+            this.toastr.success(
+              'Student Added to group successfully',
+              'Success'
+            );
+            this.AllStudentsWithoutGroup();
+          },
+        });
+      }
+    });
+  }
 
   deleteStudentDialog(student: Student) {
     const dialogRef = this.dialog.open(DeleteComponent, {
