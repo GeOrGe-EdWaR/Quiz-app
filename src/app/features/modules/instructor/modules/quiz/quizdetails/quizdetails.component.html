@@ -1,0 +1,48 @@
+<div class="container ">
+    <div class="row mt-5 ">
+        <div class="col-md-6" >
+            <div class="border p-4">
+                <div class="d-flex justify-content-between">
+                  <h5 class="ternary-color">{{details.title}}</h5>
+                  </div>
+                  <p class="pt-2">
+                    <i class="fa-solid fa-calendar-days fa-2xl px-3" style="color: #121212;"></i>
+                <span>{{details.schadule|date:"d/m/Y"}}</span></p>
+                  
+             <div class="row align-items-center p-0 border  m-2" >
+        
+             <div class="col-md-5 main-color  rounded-2 ">
+             <h5 class="rounded-1 h-100 ">Duration</h5>
+</div>
+<div class="col-md-3 ">{{details.duration}}</div>
+</div>
+
+            
+              <div class="row align-items-center border m-2">
+
+                <div class="col-md-5 main-color ">
+                    <h5>Number of questions</h5>
+                </div>
+                <div class="col-md-4">{{details.questions_number}}</div>
+              </div>
+              <div class="row  align-items-center border  m-2">
+
+                <div class="col-md-5 main-color">
+                    <h5>Score per question</h5>
+                </div>
+                <div class="col-md-4">{{details.score_per_question}}</div>
+              </div>
+              <div class="description border  border m-2">
+                <div class="titel main-color p-1"><h5>Description</h5></div>
+                <div class="des p-1">{{details.description}}</div>
+              </div>
+              <div class="row align-items-center border m-2">
+
+                <div class="col-md-5 main-color">
+                    <h5>difficulty</h5>
+                </div>
+                <div class="col-md-4">{{details.difficulty}}</div>
+              </div>
+                  </div>
+        </div>
+    </div>
