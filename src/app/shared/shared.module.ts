@@ -25,6 +25,9 @@ import { DeleteComponent } from './components/delete/delete.component';
 import { ListComponent } from './components/list/list.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
 
+import {BreadcrumbModule} from 'xng-breadcrumb';
+
+
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -54,6 +57,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatTabsModule,
     MatTableModule,
     MatSortModule,
+
+    BreadcrumbModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -77,6 +82,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     ModalActionHeaderComponent,
     ListComponent,
     NoDataComponent,
+
+    BreadcrumbModule,
   ],
 })
 export class SharedModule {}
