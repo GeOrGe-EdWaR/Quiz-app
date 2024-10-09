@@ -32,25 +32,38 @@ export class StudentComponent {
     private groupService: GroupService,
     private dialog: MatDialog,
     private toastr: ToastrService,
-    private _Router: Router,
+    private _Router: Router
   ) {}
 
   ngOnInit() {
     this.AllStudents();
     this.AllStudentsWithoutGroup();
     this.AllGroup();
-    this.paginatedStudents = this.students.slice(0, this.pageSize);
   }
+
   handlePageEvent(event: PageEvent) {
     this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
-    this.paginatedStudents = this.students.slice(this.pageIndex * this.pageSize, (this.pageIndex * this.pageSize) + this.pageSize);
+    this.paginatedStudents = this.students.slice(
+      this.pageIndex * this.pageSize,
+      this.pageIndex * this.pageSize + this.pageSize
+    );
   }
+
+  updatePagination() {
+    this.length = this.students.length;
+    this.paginatedStudents = this.students.slice(
+      this.pageIndex * this.pageSize,
+      this.pageIndex * this.pageSize + this.pageSize
+    );
+  }
+
   AllStudents() {
     this.studentService.getAllStudents().subscribe({
       next: (res) => {
         this.students = res;
+        this.updatePagination();
       },
     });
   }
@@ -78,12 +91,15 @@ export class StudentComponent {
       },
     });
   }
-  viewStudent(data:any){
-    console.log(data);
-    
-    this._Router.navigate(['/students', data._id]);
-    
+
+  viewStudent(student: Student) {
+    console.log(student);
+    this._Router.navigate([
+      'dashboard/instructor/students/viewStudent',
+      student._id,
+    ]);
   }
+
   editStudent(student: Student, groupId?: string) {
     const addDialogRef = this.dialog.open(UpdateComponent, {
       minWidth: '50%',
@@ -97,7 +113,7 @@ export class StudentComponent {
               'Student group updated successfully',
               'Success'
             );
-            this.getGroupByID( groupId! );
+            this.getGroupByID(groupId!);
           },
         });
       }
