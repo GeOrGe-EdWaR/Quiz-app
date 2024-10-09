@@ -91,6 +91,15 @@
       [class.odd]="odd"
     ></tr>
   </table>
+
+  <app-paginator
+    *ngIf="isPaginated"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="pageSizeOptions"
+    (pageEvent)="handlePaginate($event)"
+  ></app-paginator>
 </div>
 
 <ng-container *ngIf="data.length === 0">

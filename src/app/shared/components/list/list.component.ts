@@ -18,9 +18,6 @@ import { ListColumn } from '../../interfaces/list-column';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
-  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-
   @Output() handleViewEvent = new EventEmitter();
   @Output() handleEditEvent = new EventEmitter();
   @Output() handleDeleteEvent = new EventEmitter();
@@ -29,8 +26,9 @@ export class ListComponent {
   @Input() headers: ListColumn[] = [];
   @Input() data: any[] = [];
 
+  @Input() isPaginated: boolean = false;
   @Input() length: number = 0;
-  @Input() pageNumber: number = 0;
+  @Input() pageIndex: number = 0;
   @Input() pageSize: number = 10;
   @Input() showFirstLastButtons: boolean = false;
   @Input() showPageSizeOptions: boolean = false;
@@ -48,11 +46,6 @@ export class ListComponent {
   ngOnInit(): void {
     this.displayedColumns = this.headers.map((header) => header.datafield);
     this.dataSource = new MatTableDataSource(this.data);
-  }
-
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
   }
 
   view(row: any): void {
@@ -73,19 +66,11 @@ export class ListComponent {
 
   handlePaginationSizeChange(pageSize: number): void {
     this.pageSize = pageSize;
-    this.pageNumber = 0;
+    this.pageIndex = 0;
 
     this.handlePageEvent.emit({
       pageSize: pageSize,
-      pageNumber: this.pageNumber,
+      pageNumber: this.pageIndex,
     });
   }
-
-  // onSort(sortState: Sort) {
-  //   if (sortState.direction) {
-  //     this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-  //   } else {
-  //     this._liveAnnouncer.announce('Sorting cleared');
-  //   }
-  // }
 }

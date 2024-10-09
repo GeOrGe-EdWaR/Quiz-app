@@ -19,8 +19,13 @@ import { DeleteComponent } from 'src/app/shared/components/delete/delete.compone
 })
 export class QuestionsComponent {
   questionsList: QuestionItem[] = [];
+  paginatedQuestionsList: QuestionItem[] = [];
 
   columns: ListColumn[] = [];
+
+  length!: number;
+  pageSize = 10;
+  pageIndex = 0;
 
   addDialogRef!: MatDialogRef<MaintainQuestionComponent>;
   editDialogRef!: MatDialogRef<MaintainQuestionComponent>;
@@ -41,7 +46,10 @@ export class QuestionsComponent {
   getAllQuestions(): void {
     this._question.getAllQuestions().subscribe({
       next: (data) => {
+        this.length = data.length;
         this.questionsList = data;
+
+        this.updatePaginatedQuestions();
       },
     });
   }
@@ -99,6 +107,21 @@ export class QuestionsComponent {
         this.deleteQuestion(result._id);
       }
     });
+  }
+
+  onPaginationAction(event: any): void {
+    this.length = event.length;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+
+    this.updatePaginatedQuestions();
+  }
+
+  updatePaginatedQuestions(): void {
+    this.paginatedQuestionsList = this.questionsList.slice(
+      this.pageIndex * this.pageSize,
+      this.pageIndex * this.pageSize + this.pageSize
+    );
   }
 
   deleteQuestion(_id: string): void {

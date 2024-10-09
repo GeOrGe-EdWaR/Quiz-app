@@ -28,6 +28,7 @@ import { ModalActionHeaderComponent } from './components/modal-action-header/mod
 import { DeleteComponent } from './components/delete/delete.component';
 import { ListComponent } from './components/list/list.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
 
@@ -39,6 +40,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     DeleteComponent,
     ListComponent,
     NoDataComponent,
+    PaginatorComponent,
   ],
   imports: [
     CommonModule,
@@ -90,6 +92,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     ModalActionHeaderComponent,
     ListComponent,
     NoDataComponent,
+    PaginatorComponent,
 
     BreadcrumbModule,
   ],
