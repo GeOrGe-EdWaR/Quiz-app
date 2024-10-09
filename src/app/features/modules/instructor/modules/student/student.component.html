@@ -1,5 +1,15 @@
 <section>
   <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <xng-breadcrumb></xng-breadcrumb>
+      <div class="d-flex align-items-center pointer py-2 px-3 btn-border gap-1" (click)="AddStudent()">
+        <mat-icon matSuffix class="toggle-icon ternary-color"
+          >add_circle</mat-icon
+        >
+        <p class="m-0 ternary-color">Add Student</p>
+      </div>
+    </div>
+
     <div class="p-3 mt-3 border">
       <div class="d-flex align-items-center justify-content-between mb-3">
         <h5 class="ternary-color">Students List</h5>
@@ -7,10 +17,10 @@
       <mat-tab-group class="mb-4">
         <mat-tab label="Students with groups">
           <div class="row g-2 mt-4 mx-0">
-            <ng-container *ngFor="let student of students">
+            <ng-container *ngFor="let student of paginatedStudents">
               <div class="col-6">
                 <div
-                  class="d-flex justify-content-between align-items-center border p-3"
+                  class="d-flex justify-content-between align-items-center border p-3 pointer"
                 >
                   <div>
                     <h6 class="m-0 ternary-color">
@@ -18,6 +28,11 @@
                     </h6>
                   </div>
                   <div class="d-flex align-items-center gap-1">
+                    <mat-icon
+                    class="ternary-color pointer"
+                    (click)="viewStudent(student)"
+                    >visibility</mat-icon
+                  >
                     <mat-icon
                       class="ternary-color pointer"
                       (click)="editStudent(student)"
@@ -33,6 +48,13 @@
               </div>
             </ng-container>
           </div>
+          <mat-paginator
+          [length]="students.length"
+          [pageSize]="pageSize"
+          [pageIndex]="pageIndex"
+          [pageSizeOptions]="pageSizeOptions"
+          (page)="handlePageEvent($event)"
+        ></mat-paginator>
         </mat-tab>
         <mat-tab label="Students without groups">
           <div class="row g-2 mt-4 mx-0">

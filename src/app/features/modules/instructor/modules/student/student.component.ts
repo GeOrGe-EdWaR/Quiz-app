@@ -8,6 +8,9 @@ import { GroupService } from './../group/services/group.service';
 import { Group } from '../group/interfaces/group';
 import { AddToGroupComponent } from './components/add-to-group/add-to-group.component';
 import { UpdateComponent } from './components/update/update.component';
+import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { AddStudentComponent } from './components/add-student/add-student.component';
 
 @Component({
   selector: 'app-student',
@@ -19,12 +22,18 @@ export class StudentComponent {
   studentsWithoutGroup: Student[] = [];
   groups: Group[] = [];
   studentFiltrationGroup: Student[] = [];
+  paginatedStudents: Student[] = [];
+  length = this.students.length;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
 
   constructor(
     private studentService: StudentService,
     private groupService: GroupService,
     private dialog: MatDialog,
     private toastr: ToastrService,
+    private _Router: Router
   ) {}
 
   ngOnInit() {
@@ -33,10 +42,29 @@ export class StudentComponent {
     this.AllGroup();
   }
 
+  handlePageEvent(event: PageEvent) {
+    this.length = event.length;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+    this.paginatedStudents = this.students.slice(
+      this.pageIndex * this.pageSize,
+      this.pageIndex * this.pageSize + this.pageSize
+    );
+  }
+
+  updatePagination() {
+    this.length = this.students.length;
+    this.paginatedStudents = this.students.slice(
+      this.pageIndex * this.pageSize,
+      this.pageIndex * this.pageSize + this.pageSize
+    );
+  }
+
   AllStudents() {
     this.studentService.getAllStudents().subscribe({
       next: (res) => {
         this.students = res;
+        this.updatePagination();
       },
     });
   }
@@ -65,6 +93,14 @@ export class StudentComponent {
     });
   }
 
+  viewStudent(student: Student) {
+    console.log(student);
+    this._Router.navigate([
+      'dashboard/instructor/students/viewStudent',
+      student._id,
+    ]);
+  }
+
   editStudent(student: Student, groupId?: string) {
     const addDialogRef = this.dialog.open(UpdateComponent, {
       minWidth: '50%',
@@ -78,7 +114,7 @@ export class StudentComponent {
               'Student group updated successfully',
               'Success'
             );
-            this.getGroupByID( groupId! );
+            this.getGroupByID(groupId!);
           },
         });
       }
@@ -100,6 +136,28 @@ export class StudentComponent {
             this.AllStudentsWithoutGroup();
           },
         });
+      }
+    });
+  }
+
+  AddStudent() {
+    const addDialogRef = this.dialog.open(AddStudentComponent, {
+      minWidth: '50%',
+      data: { students: this.studentsWithoutGroup, groups: this.groups },
+    });
+    addDialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.studentService
+          .AddToGroup(data.selectStudentID, data.selectGroupID)
+          .subscribe({
+            next: () => {
+              this.toastr.success(
+                'Student Added to group successfully',
+                'Success'
+              );
+              this.AllStudentsWithoutGroup();
+            },
+          });
       }
     });
   }

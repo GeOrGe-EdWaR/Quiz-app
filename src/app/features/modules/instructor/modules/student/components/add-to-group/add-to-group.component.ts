@@ -10,6 +10,7 @@ import { Group } from '../../../group/interfaces/group';
 })
 export class AddToGroupComponent {
   selectValue: string = '';
+  selectStudent: string = '';
   groups: Group[] = [];
 
   constructor(
@@ -21,7 +22,7 @@ export class AddToGroupComponent {
   }
 
   onSubmit() {
-    this.dialogRef.close(this.selectValue);
+    if (this.selectValue) this.dialogRef.close(this.selectValue);
   }
 
   onClose(): void {

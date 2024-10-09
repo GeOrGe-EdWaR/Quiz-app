@@ -8,6 +8,7 @@ import { GroupService } from './services/group.service';
 import { Group } from './interfaces/group';
 import { AddEditGroupComponent } from './components/add-edit-group/add-edit-group.component';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { ViewGroupComponent } from './components/add-edit-group/view-group/view-group.component';
 
 @Component({
   selector: 'app-group',
@@ -85,6 +86,13 @@ export class GroupComponent {
         this._toastr.success('Group deleted successfully', 'Success');
         this.AllGroups();
       },
+    });
+  }
+
+  viewGroup(group: Group) {
+    this.editDialogRef = this.dialog.open(ViewGroupComponent, {
+      minWidth: '50%',
+      data: { id: group._id },
     });
   }
 }
