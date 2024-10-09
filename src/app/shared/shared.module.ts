@@ -20,6 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import {BreadcrumbModule} from 'xng-breadcrumb';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -27,6 +28,8 @@ import { ModalActionHeaderComponent } from './components/modal-action-header/mod
 import { DeleteComponent } from './components/delete/delete.component';
 import { ListComponent } from './components/list/list.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
+
+
 
 @NgModule({
   declarations: [
@@ -57,6 +60,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatTabsModule,
     MatTableModule,
     MatSortModule,
+    BreadcrumbModule,
     MatDatepickerModule,
     MatNativeDateModule,
     ClipboardModule,
@@ -86,6 +90,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     ModalActionHeaderComponent,
     ListComponent,
     NoDataComponent,
+
+    BreadcrumbModule,
   ],
 })
 export class SharedModule {}

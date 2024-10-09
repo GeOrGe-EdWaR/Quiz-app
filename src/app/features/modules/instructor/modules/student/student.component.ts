@@ -8,6 +8,8 @@ import { GroupService } from './../group/services/group.service';
 import { Group } from '../group/interfaces/group';
 import { AddToGroupComponent } from './components/add-to-group/add-to-group.component';
 import { UpdateComponent } from './components/update/update.component';
+import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student',
@@ -19,20 +21,32 @@ export class StudentComponent {
   studentsWithoutGroup: Student[] = [];
   groups: Group[] = [];
   studentFiltrationGroup: Student[] = [];
+  paginatedStudents: Student[] = [];
+  length = this.students.length;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
 
   constructor(
     private studentService: StudentService,
     private groupService: GroupService,
     private dialog: MatDialog,
     private toastr: ToastrService,
+    private _Router: Router,
   ) {}
 
   ngOnInit() {
     this.AllStudents();
     this.AllStudentsWithoutGroup();
     this.AllGroup();
+    this.paginatedStudents = this.students.slice(0, this.pageSize);
   }
-
+  handlePageEvent(event: PageEvent) {
+    this.length = event.length;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+    this.paginatedStudents = this.students.slice(this.pageIndex * this.pageSize, (this.pageIndex * this.pageSize) + this.pageSize);
+  }
   AllStudents() {
     this.studentService.getAllStudents().subscribe({
       next: (res) => {
@@ -64,7 +78,12 @@ export class StudentComponent {
       },
     });
   }
-
+  viewStudent(data:any){
+    console.log(data);
+    
+    this._Router.navigate(['/students', data._id]);
+    
+  }
   editStudent(student: Student, groupId?: string) {
     const addDialogRef = this.dialog.open(UpdateComponent, {
       minWidth: '50%',
