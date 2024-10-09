@@ -21,6 +21,7 @@ a {
 
 mat-icon {
   display: flex !important;
+  align-items: center;
 }
 
 .bg-main-color {
@@ -77,4 +78,10 @@ mat-icon {
   border-radius: $border-radius-8;
 }
 
-
+.custom-fab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 10px 15px;
+}

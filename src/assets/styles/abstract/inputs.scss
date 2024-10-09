@@ -1,17 +1,17 @@
 .auth form {
+
   .mat-mdc-select,
-  .mdc-text-field--outlined:not(.mdc-text-field--disabled)
-    .mdc-text-field__input,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input,
   .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-floating-label {
     color: $main-color;
   }
 
-  .mdc-text-field--outlined:not(.mdc-text-field--disabled)
-    .mdc-floating-label--float-above {
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-floating-label--float-above {
     color: $quaternary-color;
   }
 
   .mdc-text-field--outlined .mdc-notched-outline {
+
     .mdc-notched-outline__leading,
     .mdc-notched-outline__notch,
     .mdc-notched-outline__trailing {
@@ -19,23 +19,11 @@
     }
   }
 
-  .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
-      .mdc-text-field--focused
-    ):hover
-    .mdc-notched-outline
-    .mdc-notched-outline__leading,
-  .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
-      .mdc-text-field--focused
-    ):hover
-    .mdc-notched-outline
-    .mdc-notched-outline__notch,
-  .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
-      .mdc-text-field--focused
-    ):hover
-    .mdc-notched-outline
-    .mdc-notched-outline__trailing {
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
     border-color: $quaternary-color;
-    
+
   }
 
   .mat-icon {
@@ -65,7 +53,7 @@
   .mat-mdc-text-field-wrapper {
     padding-inline-start: 0 !important;
   }
-  
+
   .input-prefix-label,
   .textarea-prefix-label {
     min-width: 50px;
@@ -84,4 +72,13 @@
   .textarea-prefix-label {
     padding: 2rem 20px 2rem 15px;
   }
+}
+
+.mat-mdc-select-disabled,
+.mdc-text-field--outlined.mdc-text-field--disabled .mdc-text-field__input {
+  color: $ternary-color !important;
+}
+
+input:disabled{
+  background: inherit;
 }
