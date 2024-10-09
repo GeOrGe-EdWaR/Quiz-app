@@ -4,14 +4,13 @@ import { CommonModule } from '@angular/common';
 import { StudentComponent } from './student.component';
 import { ViewStudentComponent } from './components/view-student/view-student.component';
 
-const routes:Routes = [
-  { path: '', component: StudentComponent , children: [
-  { path: 'view-student', component: ViewStudentComponent },
-  {path: 'view-student/:id', component: ViewStudentComponent }
-]}];
+const routes: Routes = [
+  { path: '', component: StudentComponent },
+  { path: 'viewStudent/:id', component: ViewStudentComponent },
+];
 
 @NgModule({
-  imports: [CommonModule,RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [CommonModule, RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class StudentRoutingModule { }
+export class StudentRoutingModule {}
