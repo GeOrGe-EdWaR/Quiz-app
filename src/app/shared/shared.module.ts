@@ -17,6 +17,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import {BreadcrumbModule} from 'xng-breadcrumb';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -25,7 +29,6 @@ import { DeleteComponent } from './components/delete/delete.component';
 import { ListComponent } from './components/list/list.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
 
-import {BreadcrumbModule} from 'xng-breadcrumb';
 
 
 @NgModule({
@@ -57,8 +60,10 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     MatTabsModule,
     MatTableModule,
     MatSortModule,
-
     BreadcrumbModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ClipboardModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -76,6 +81,9 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     MatTabsModule,
     MatTableModule,
     MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ClipboardModule,
 
     NavbarComponent,
     SidebarComponent,

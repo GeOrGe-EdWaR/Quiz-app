@@ -10,7 +10,7 @@
   class="px-5 pt-4 pb-5 row mx-0 justify-content-end"
   [formGroup]="questionForm"
 >
-  <div class="col-12 mb-1">
+  <div class="col-md-12 mb-1">
     <mat-form-field
       class="w-100 input-prefix-label-container"
       appearance="outline"
@@ -31,7 +31,7 @@
     </mat-form-field>
   </div>
 
-  <div class="col-12 mb-1">
+  <div class="col-md-12 mb-1">
     <mat-form-field
       class="w-100 input-prefix-label-container"
       appearance="outline"
@@ -54,7 +54,7 @@
     </mat-form-field>
   </div>
 
-  <div class="col-6 mb-1">
+  <div class="col-md-6 mb-1">
     <mat-form-field
       class="w-100 input-prefix-label-container"
       appearance="outline"
@@ -69,13 +69,13 @@
         "
       >
         <ng-container *ngIf="questionForm.controls.optionA.errors['required']">
-          option is required
+          Option is required
         </ng-container>
       </mat-error>
     </mat-form-field>
   </div>
 
-  <div class="col-6 mb-1">
+  <div class="col-md-6 mb-1">
     <mat-form-field
       class="w-100 input-prefix-label-container"
       appearance="outline"
@@ -90,13 +90,13 @@
         "
       >
         <ng-container *ngIf="questionForm.controls.optionB.errors['required']">
-          option is required
+          Option is required
         </ng-container>
       </mat-error>
     </mat-form-field>
   </div>
 
-  <div class="col-6 mb-1">
+  <div class="col-md-6 mb-1">
     <mat-form-field
       class="w-100 input-prefix-label-container"
       appearance="outline"
@@ -111,13 +111,13 @@
         "
       >
         <ng-container *ngIf="questionForm.controls.optionC.errors['required']">
-          option is required
+          Option is required
         </ng-container>
       </mat-error>
     </mat-form-field>
   </div>
 
-  <div class="col-6 mb-1">
+  <div class="col-md-6 mb-1">
     <mat-form-field
       class="w-100 input-prefix-label-container"
       appearance="outline"
@@ -132,18 +132,18 @@
         "
       >
         <ng-container *ngIf="questionForm.controls.optionD.errors['required']">
-          option is required
+          Option is required
         </ng-container>
       </mat-error>
     </mat-form-field>
   </div>
 
-  <div class="col-6 mb-1">
+  <div class="col-md-4 mb-1">
     <mat-form-field
       class="w-100 input-prefix-label-container"
       appearance="outline"
     >
-      <div matTextPrefix class="input-prefix-label">Category Type</div>
+      <div matTextPrefix class="input-prefix-label">Type</div>
       <mat-select
         class="input-prefix-label-container"
         formControlName="type"
@@ -167,7 +167,7 @@
     </mat-form-field>
   </div>
 
-  <div class="col-6 mb-1">
+  <div class="col-md-4 mb-1">
     <mat-form-field
       class="w-100 input-prefix-label-container"
       appearance="outline"
@@ -180,8 +180,8 @@
       >
         <mat-option
           *ngFor="let difficulty of difficultyDropDown"
-          [value]="difficulty.value"
-          >{{ difficulty.label }}</mat-option
+          [value]="difficulty"
+          >{{ difficulty | titlecase }}</mat-option
         >
       </mat-select>
 
@@ -200,13 +200,21 @@
     </mat-form-field>
   </div>
 
-  <div class="col-6 mb-1">
+  <div class="col-md-4 mb-1">
     <mat-form-field
       class="w-100 input-prefix-label-container"
       appearance="outline"
     >
       <div matTextPrefix class="input-prefix-label">Answer</div>
-      <input matInput type="text" formControlName="answer" />
+      <mat-select
+        class="input-prefix-label-container"
+        formControlName="answer"
+        [multiple]="false"
+      >
+        <mat-option *ngFor="let answer of answerDropDown" [value]="answer">{{
+          answer
+        }}</mat-option>
+      </mat-select>
 
       <mat-error
         *ngIf="

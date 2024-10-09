@@ -20,7 +20,7 @@
           *ngIf="role === 'Instructor'"
         >
           <mat-icon matSuffix class="toggle-icon ternary-color">alarm</mat-icon>
-          <p class="m-0 ternary-color">New Quiz</p>
+          <p class="m-0 ternary-color" (click)="addQuiz()">New Quiz</p>
         </div>
       </div>
       <div class="col-3 d-flex justify-content-between align-items-center py-3">

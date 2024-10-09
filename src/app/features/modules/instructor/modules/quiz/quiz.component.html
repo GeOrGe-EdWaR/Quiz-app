@@ -67,44 +67,7 @@
             <i class="fa-solid fa-arrow-right ms-2 quaternary-color"></i
           ></a>
         </div>
-        <div class="card border-1 m-3">
-          <div class="row">
-            <table mat-table [dataSource]="dataSource" class="">
-              <!-- Position Column -->
-              <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef>Title</th>
-                <td mat-cell *matCellDef="let element">
-                  {{ element.title }}
-                </td>
-              </ng-container>
-
-              <!-- Name Column -->
-              <ng-container matColumnDef="group">
-                <th mat-header-cell *matHeaderCellDef>Group Name</th>
-                <td mat-cell *matCellDef="let element">{{ element.group }}</td>
-              </ng-container>
-
-              <!-- Weight Column -->
-              <ng-container matColumnDef="participants">
-                <th mat-header-cell *matHeaderCellDef>No. of students</th>
-                <td mat-cell *matCellDef="let element">
-                  {{ element.participants }}
-                </td>
-              </ng-container>
-
-              <!-- Symbol Column -->
-              <ng-container matColumnDef="schadule">
-                <th mat-header-cell *matHeaderCellDef>Date</th>
-                <td mat-cell *matCellDef="let element">
-                  {{ element.schadule | date : "dd/MM/yyyy" }}
-                </td>
-              </ng-container>
-
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-            </table>
-          </div>
-        </div>
+        <app-list [headers]="columns" [data]="completedQuizzes"></app-list>
       </div>
     </div>
     <div class="col-md-6">
@@ -136,7 +99,12 @@
                 <small
                   class="fw-bold ternary-color d-flex justify-content-between overflow-hidden"
                   >No. of student’s enrolled:{{ item.participants }}
-                  <a routerLink="/dashboard/instructor/quizzes">
+                  <a
+                    [routerLink]="[
+                      '/dashboard/instructor/quizzes/details',
+                      item._id
+                    ]"
+                  >
                     <span class="ternary-color">Open</span>
                     <i class="fa-solid fa-arrow-right ms-2 quaternary-color"></i
                   ></a>

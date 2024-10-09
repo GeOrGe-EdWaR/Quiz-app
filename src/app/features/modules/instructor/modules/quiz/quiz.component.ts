@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { DashlistService } from '../../../../services/dashlist.service';
 import { Quiz } from '../../../../interfaces/quiz';
 import { GroupService } from './../group/services/group.service';
+import { ListColumn } from 'src/app/shared/interfaces/list-column';
+import { QuestionItem } from '../questions/interfaces/question-item';
+import { QuizService } from './services/quiz.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-quiz',
@@ -11,13 +15,15 @@ import { GroupService } from './../group/services/group.service';
 export class QuizComponent {
   completedQuizzes: Quiz[] = [];
   IncomingQuizzes: Quiz[] = [];
-  displayedColumns: string[] = ['title', 'group', 'schadule', 'participants'];
-  dataSource: any[] = [];
+  columns: ListColumn[] = [];
 
   constructor(
     private _DashlistService: DashlistService,
-    private groupService: GroupService
-  ) {}
+    private groupService: GroupService,
+    private quizService: QuizService
+  ) {
+    this.columns = this.quizService.listColumns;
+  }
 
   ngOnInit(): void {
     this.getCompletedQuiz();
@@ -27,8 +33,12 @@ export class QuizComponent {
   getCompletedQuiz() {
     this._DashlistService.topLastQuizzes().subscribe({
       next: (res) => {
+        res.forEach((ele) => {
+          this.getGroupById(ele.group).subscribe((group) => {
+            ele.group = group.name;
+          });
+        });
         this.completedQuizzes = res;
-        this.dataSource = this.completedQuizzes;
       },
     });
   }
@@ -41,11 +51,7 @@ export class QuizComponent {
     });
   }
 
-  getGroupById(groupID: string) {
-    this.groupService.getGroupById(groupID).subscribe({
-      next: (res) => {
-        res.name;
-      },
-    });
+  getGroupById(groupID: any) {
+    return this.groupService.getGroupById(groupID);
   }
 }
