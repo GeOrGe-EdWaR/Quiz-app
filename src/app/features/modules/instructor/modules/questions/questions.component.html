@@ -9,8 +9,12 @@
 
 <app-list
   [headers]="columns"
-  [data]="questionsList"
+  [data]="paginatedQuestionsList"
+  [isPaginated]="true"
+  [length]="length"
+  [pageIndex]="0"
   (handleViewEvent)="onViewAction($event)"
   (handleEditEvent)="onEditAction($event)"
   (handleDeleteEvent)="onDeleteAction($event)"
+  (handlePageEvent)="onPaginationAction($event)"
 ></app-list>
