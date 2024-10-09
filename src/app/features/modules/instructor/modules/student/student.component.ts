@@ -10,6 +10,7 @@ import { AddToGroupComponent } from './components/add-to-group/add-to-group.comp
 import { UpdateComponent } from './components/update/update.component';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { AddStudentComponent } from './components/add-student/add-student.component';
 
 @Component({
   selector: 'app-student',
@@ -135,6 +136,28 @@ export class StudentComponent {
             this.AllStudentsWithoutGroup();
           },
         });
+      }
+    });
+  }
+
+  AddStudent() {
+    const addDialogRef = this.dialog.open(AddStudentComponent, {
+      minWidth: '50%',
+      data: { students: this.studentsWithoutGroup, groups: this.groups },
+    });
+    addDialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.studentService
+          .AddToGroup(data.selectStudentID, data.selectGroupID)
+          .subscribe({
+            next: () => {
+              this.toastr.success(
+                'Student Added to group successfully',
+                'Success'
+              );
+              this.AllStudentsWithoutGroup();
+            },
+          });
       }
     });
   }
