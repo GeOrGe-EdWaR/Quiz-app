@@ -1,6 +1,9 @@
 import { DashlistService } from '../../services/dashlist.service';
 import { Component } from '@angular/core';
 import { Quiz } from '../../interfaces/quiz';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { ListColumn } from 'src/app/shared/interfaces/list-column';
+import { QuizService } from '../../modules/instructor/modules/quiz/services/quiz.service';
 
 @Component({
   selector: 'app-dashlist',
@@ -8,7 +11,7 @@ import { Quiz } from '../../interfaces/quiz';
   styleUrls: ['./dashlist.component.scss'],
 })
 export class DashlistComponent {
-  constructor(private _DashlistService: DashlistService) {}
+  role: string = '';
   students: any;
   quizzes: Quiz[] = [];
   images: string[] = [
@@ -18,9 +21,24 @@ export class DashlistComponent {
     '../../../../../assets/images/4.png',
     '../../../../../assets/images/user img.svg',
   ];
+  columns: ListColumn[] = [];
+  completedQuizzes: Quiz[] = [];
+
+  constructor(
+    private _DashlistService: DashlistService,
+    private _AuthService: AuthService,
+    private quizService: QuizService,
+  ) {
+    this.columns = this.quizService.listColumns;
+  }
+
   ngOnInit(): void {
-    this.getStudentsTop();
+    this.role = this._AuthService.role;
+    if (this.role === 'Instructor') {
+      this.getStudentsTop();
+    }
     this.getComingQuiz();
+    this.getCompletedQuiz();
   }
 
   getStudentsTop() {
@@ -35,8 +53,16 @@ export class DashlistComponent {
   getComingQuiz() {
     this._DashlistService.topquiz().subscribe({
       next: (res) => {
-        console.log( res );
+        console.log(res);
         this.quizzes = res;
+      },
+    });
+  }
+
+  getCompletedQuiz() {
+    this._DashlistService.topLastQuizzes().subscribe({
+      next: (res) => {
+        this.completedQuizzes = res;
       },
     });
   }
