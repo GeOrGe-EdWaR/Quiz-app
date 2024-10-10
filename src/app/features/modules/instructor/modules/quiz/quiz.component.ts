@@ -3,9 +3,7 @@ import { DashlistService } from '../../../../services/dashlist.service';
 import { Quiz } from '../../../../interfaces/quiz';
 import { GroupService } from './../group/services/group.service';
 import { ListColumn } from 'src/app/shared/interfaces/list-column';
-import { QuestionItem } from '../questions/interfaces/question-item';
 import { QuizService } from './services/quiz.service';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-quiz',

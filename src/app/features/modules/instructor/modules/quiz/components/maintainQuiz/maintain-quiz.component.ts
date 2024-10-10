@@ -6,6 +6,7 @@ import { GroupService } from '../../../group/services/group.service';
 import { Group } from '../../../group/interfaces/group';
 import { MatDialog } from '@angular/material/dialog';
 import { CodeSuccessComponent } from '../code-success/code-success.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-quizDetails',
@@ -46,7 +47,8 @@ export class MaintainQuizComponent implements OnInit {
     private _groupService: GroupService,
     private _ActivatedRoute: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _toastr: ToastrService
   ) {
     this.quizID = this._ActivatedRoute.snapshot.params['id'];
   }
@@ -99,8 +101,8 @@ export class MaintainQuizComponent implements OnInit {
   editQuiz() {
     if (this.quizForm.valid) {
       this._QuizService.updateQuiz(this.quizID, this.quizForm).subscribe({
-        next: (res) => {
-          console.log(res);
+        next: () => {
+          this._toastr.success('Quiz is updated successfully', 'Success');
         },
       });
     } else {
@@ -113,6 +115,7 @@ export class MaintainQuizComponent implements OnInit {
       this._QuizService.addQuiz(this.quizForm).subscribe({
         next: (res) => {
           if (res.message === 'Record created successfully') {
+            this._toastr.success('Quiz is added successfully', 'Success');
             this.onClose();
             this.openCode(res.data.code);
           }
@@ -128,9 +131,7 @@ export class MaintainQuizComponent implements OnInit {
       minWidth: '25%',
       data: { code: code },
     });
-    codeDialogRef.afterClosed().subscribe((res) => {
-      console.log(res);
-    });
+    codeDialogRef.afterClosed().subscribe((res) => {});
   }
 
   onClose(): void {

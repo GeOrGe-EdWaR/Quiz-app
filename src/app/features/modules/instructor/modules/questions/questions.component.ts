@@ -48,7 +48,6 @@ export class QuestionsComponent {
       next: (data) => {
         this.length = data.length;
         this.questionsList = data;
-
         this.updatePaginatedQuestions();
       },
     });
@@ -128,7 +127,6 @@ export class QuestionsComponent {
     this._question.deleteQuestion(_id).subscribe({
       next: () => {
         this._toastr.success('Question is deleted successfully', 'Success');
-
         this.getAllQuestions();
       },
     });

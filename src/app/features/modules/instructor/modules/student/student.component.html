@@ -17,7 +17,7 @@
       <div class="d-flex align-items-center justify-content-between mb-3">
         <h5 class="ternary-color">Students List</h5>
       </div>
-      <mat-tab-group class="mb-4">
+      <mat-tab-group class="mb-4" (selectedIndexChange)="onTabChange()">
         <mat-tab label="Students with groups">
           <div class="row g-2 mt-4 mx-0">
             <ng-container *ngFor="let student of paginatedStudents">
@@ -85,6 +85,7 @@
         </mat-tab>
         <mat-tab label="Groups list">
           <mat-tab-group
+            [(selectedIndex)]="selectedGroupTabIndex"
             mat-stretch-tabs="false"
             mat-align-tabs="center"
             (selectedIndexChange)="getGroupByID(groups[$event]._id)"
@@ -108,7 +109,7 @@
                         >
                         <mat-icon
                           class="ternary-color pointer"
-                          (click)="deleteStudentDialog(student)"
+                          (click)="deleteStudentDialog(student, true ,group._id)"
                           >delete</mat-icon
                         >
                       </div>

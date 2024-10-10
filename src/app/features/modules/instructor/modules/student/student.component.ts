@@ -27,6 +27,7 @@ export class StudentComponent {
   pageSize = 10;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
+  selectedGroupTabIndex = 0;
 
   constructor(
     private studentService: StudentService,
@@ -162,7 +163,7 @@ export class StudentComponent {
     });
   }
 
-  deleteStudentDialog(student: Student) {
+  deleteStudentDialog(student: Student, fromGroup?: boolean, groupID?: string) {
     const dialogRef = this.dialog.open(DeleteComponent, {
       minWidth: '50%',
       data: {
@@ -174,19 +175,30 @@ export class StudentComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.deleteStudent(result._id);
+        this.deleteStudent(result._id, groupID!, fromGroup!);
       } else {
         console.log('Delete canceled');
       }
     });
   }
 
-  deleteStudent(id: string) {
+  deleteStudent(id: string, groupId: string, fromGroup: boolean) {
     this.studentService.deleteStudent(id).subscribe({
       next: () => {
         this.toastr.success('Student deleted successfully', 'Success');
+        if (fromGroup) {
+          this.getGroupByID(groupId);
+        }
         this.AllStudents();
       },
     });
+  }
+
+  resetGroupTabIndex() {
+    this.selectedGroupTabIndex = 0;
+  }
+
+  onTabChange() {
+    this.resetGroupTabIndex();
   }
 }
