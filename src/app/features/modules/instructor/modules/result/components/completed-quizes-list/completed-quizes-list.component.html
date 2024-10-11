@@ -1,1 +1,15 @@
-<p>completed-quizes-list works!</p>
+
+<div class="card border">
+  <app-list
+  class="w-75 m-5 mx-auto"
+    [headers]="columns"
+    [data]="paginatedresultList"
+  [isPaginated]="true"
+  (handleViewEvent)="onViewAction($event)"
+  [length]="length"
+  [pageIndex]="pageIndex"
+ 
+  (handlePageEvent)="onPaginationAction($event)">
+</app-list>
+
+</div>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ListColumn } from 'src/app/shared/interfaces/list-column';
 
 @Injectable({
   providedIn: 'root',
@@ -10,43 +11,46 @@ export class ResultService {
 
   constructor(private http: HttpClient) {}
 
-  getCompletedQuizes(): Observable<any[]> {
-    return this.http.get<any[]>(this.url + '/' + 'completed');
+  getCompletedQuizesresult(): Observable<any[]> {
+    return this.http.get<any[]>(this.url + '/' + 'result');
   }
 
-  // Handle list columns
-  // get listColumns(): ListColumn[] {
-  //   return [
-  //     {
-  //       type: 'text',
-  //       header: 'Question Title',
-  //       datafield: 'title',
-  //     },
-  //     {
-  //       type: 'text',
-  //       header: 'Question Desc',
-  //       datafield: 'description',
-  //     },
-  //     {
-  //       type: 'text',
-  //       header: 'Question difficulty level',
-  //       datafield: 'difficulty',
-  //     },
-  //     {
-  //       type: 'text',
-  //       header: 'Type',
-  //       datafield: 'type',
-  //     },
-  //     {
-  //       type: 'actions',
-  //       header: 'Actions',
-  //       datafield: 'actions',
-  //       actions: {
-  //         isView: true,
-  //         isEdit: true,
-  //         isDelete: true,
-  //       },
-  //     },
-  //   ];
-  // }
+ 
+  get listColumns(): ListColumn[] {
+    return [
+      {
+        type: 'text',
+        header: ' Title',
+        datafield: 'title',
+       
+      },
+      {
+        type: 'text',
+        header: 'Group name',
+        datafield: 'group',
+      
+      },
+      {
+        type: 'text',
+        header: 'No. of persons in group',
+        datafield: 'difficulty',
+  
+      },
+      {
+        type: 'length',
+        header: 'Participants',
+        datafield: 'participants',
+      },
+      {
+        type: 'actions',
+        header: 'Actions',
+        datafield: 'actions',
+        actions: {
+          isView: true,
+          isEdit: false,
+          isDelete: false,
+        },
+      },
+    ];
+  }
 }
