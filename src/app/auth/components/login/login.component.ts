@@ -42,7 +42,7 @@ export class LoginComponent {
             this.router.navigate(['/dashboard/student/quizzes']);
           }
           else {
-            this.router.navigate(['/dashboard/dashboardList']);
+            this.router.navigate(['/dashboard/instructor/dashboardList']);
           }
         },
       });

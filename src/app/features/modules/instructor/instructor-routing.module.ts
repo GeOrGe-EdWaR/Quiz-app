@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InstructorComponent } from './instructor.component';
+import { DashlistComponent } from './components/dashlist/dashlist.component';
 
 const routes: Routes = [
   {
     path: '',
     component: InstructorComponent,
     children: [
+      { path: '', redirectTo: 'dashboardList', pathMatch: 'full' },
+      { path: 'dashboardList', component: DashlistComponent },
       {
         path: 'groups',
         loadChildren: () =>
