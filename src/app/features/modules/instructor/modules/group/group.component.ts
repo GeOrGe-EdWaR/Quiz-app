@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 import { MatDialog } from '@angular/material/dialog';
-DeleteComponent;
+
 import { GroupService } from './services/group.service';
 
 import { Group } from './interfaces/group';
