@@ -12,7 +12,7 @@ export class SidebarComponent {
       label: 'Dashboard',
       icon: 'roofing',
       link: '/dashboard/dashboardList',
-      active: true,
+      active: this.isInstructor(),
     },
     {
       label: 'Groups',

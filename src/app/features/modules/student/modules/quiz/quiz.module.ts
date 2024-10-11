@@ -3,15 +3,23 @@ import { CommonModule } from '@angular/common';
 
 import { QuizRoutingModule } from './quiz-routing.module';
 import { QuizComponent } from './quiz.component';
+import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
+import { QuizPageComponent } from './components/quiz-page/quiz-page.component';
+import { JoinSuccessComponent } from './components/join-success/join-success.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    QuizComponent
+    QuizComponent,
+    JoinQuizComponent,
+    QuizPageComponent,
+    JoinSuccessComponent
   ],
   imports: [
     CommonModule,
-    QuizRoutingModule
+    QuizRoutingModule,
+    SharedModule
   ]
 })
 export class QuizModule { }

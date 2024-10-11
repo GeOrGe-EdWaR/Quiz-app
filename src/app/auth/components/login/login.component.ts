@@ -37,8 +37,13 @@ export class LoginComponent {
           this._auth.getUserData();
         },
         complete: () => {
-          this.toastr.success('Login successfully', 'Success');
-          this.router.navigate(['/dashboard/dashboardList']);
+          this.toastr.success( 'Login successfully', 'Success' );
+          if ( this._auth.role === 'Student' ) {
+            this.router.navigate(['/dashboard/student/quizzes']);
+          }
+          else {
+            this.router.navigate(['/dashboard/dashboardList']);
+          }
         },
       });
     } else {
