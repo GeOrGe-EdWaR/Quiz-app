@@ -52,6 +52,6 @@ export class JoinQuizComponent {
       data: quizData,
       width: '25%',
     });
-    codeDialogRef.afterClosed().subscribe((res) => {});
+    codeDialogRef.afterClosed().subscribe(() => {});
   }
 }

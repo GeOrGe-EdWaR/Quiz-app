@@ -7,6 +7,7 @@ const routes: Routes = [
     path: '',
     component: StudentComponent,
     children: [
+      { path: '', redirectTo: 'quizzes', pathMatch: 'full' },
       {
         path: 'quizzes',
         loadChildren: () =>

@@ -1,6 +1,6 @@
-import { DashlistService } from '../../services/dashlist.service';
+import { DashlistService } from 'src/app/features/modules/instructor/services/dashlist.service';
 import { Component } from '@angular/core';
-import { Quiz } from '../../interfaces/quiz';
+import { Quiz } from 'src/app/features/modules/instructor/interfaces/quiz';
 
 @Component({
   selector: 'app-dashlist',
@@ -18,9 +18,7 @@ export class DashlistComponent {
     '../../../../../assets/images/user img.svg',
   ];
 
-  constructor(
-    private _DashlistService: DashlistService,
-  ) {}
+  constructor(private _DashlistService: DashlistService) {}
 
   ngOnInit(): void {
     this.getStudentsTop();

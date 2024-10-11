@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Quiz } from 'src/app/features/interfaces/quiz';
-import { DashlistService } from 'src/app/features/services/dashlist.service';
+import { Quiz } from 'src/app/features/modules/instructor/interfaces/quiz';
+import { DashlistService } from 'src/app/features/modules/instructor/services/dashlist.service';
 import { ListColumn } from 'src/app/shared/interfaces/list-column';
 import { JoinQuizComponent } from './components/join-quiz/join-quiz.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -63,6 +63,6 @@ export class QuizComponent {
     const codeDialogRef = this.dialog.open(JoinQuizComponent, {
       width: '25%',
     });
-    codeDialogRef.afterClosed().subscribe((res) => {});
+    codeDialogRef.afterClosed().subscribe(() => {});
   }
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MaintainQuizComponent } from 'src/app/features/modules/instructor/modules/quiz/components/maintainQuiz/maintain-quiz.component';
+import { JoinQuiz } from './../../../features/modules/student/modules/quiz/interfaces/joinQuiz';
+import { JoinQuizComponent } from 'src/app/features/modules/student/modules/quiz/components/join-quiz/join-quiz.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -26,5 +28,12 @@ export class NavbarComponent {
       minWidth: '50%',
     });
     addDialogRef.afterClosed().subscribe(() => {});
+  }
+
+  joinQuiz() {
+    const joinDialogRef = this.dialog.open(JoinQuizComponent, {
+      width: '25%',
+    });
+    joinDialogRef.afterClosed().subscribe(() => {});
   }
 }
