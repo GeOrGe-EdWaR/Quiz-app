@@ -6,7 +6,7 @@ import { ViewStudentComponent } from './components/view-student/view-student.com
 
 const routes: Routes = [
   { path: '', component: StudentComponent },
-  { path: 'viewStudent/:id', component: ViewStudentComponent },
+  { path: 'viewStudent/:id', component: ViewStudentComponent, data: { breadcrumb: 'Student detailes' } },
 ];
 
 @NgModule({
