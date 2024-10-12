@@ -8,10 +8,11 @@ import { AddToGroupComponent } from './components/add-to-group/add-to-group.comp
 import { ViewStudentComponent } from './components/view-student/view-student.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddStudentComponent } from './components/add-student/add-student.component';
+import { RemoveGroupComponent } from './components/remove-group/remove-group.component';
 
 
 @NgModule({
-  declarations: [StudentComponent, AddToGroupComponent, UpdateComponent, ViewStudentComponent, AddStudentComponent],
+  declarations: [StudentComponent, AddToGroupComponent, UpdateComponent, ViewStudentComponent, AddStudentComponent, RemoveGroupComponent],
   imports: [CommonModule, StudentRoutingModule, SharedModule],
 })
 export class StudentModule {}
