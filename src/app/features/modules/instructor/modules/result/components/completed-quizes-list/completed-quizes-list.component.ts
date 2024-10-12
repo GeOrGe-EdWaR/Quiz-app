@@ -7,51 +7,52 @@ import { MaintainQuestionResponse } from '../../../questions/interfaces/maintain
 import { Router } from '@angular/router';
 import { GroupService } from '../../../group/services/group.service';
 
-
 @Component({
   selector: 'app-completed-quizes-list',
   templateUrl: './completed-quizes-list.component.html',
   styleUrls: ['./completed-quizes-list.component.scss'],
 })
 export class CompletedQuizesListComponent implements OnInit {
-  constructor(private _ResultService:ResultService, private router:Router, private groupService: GroupService,){
+  constructor(
+    private _ResultService: ResultService,
+    private router: Router,
+    private groupService: GroupService
+  ) {
     this.columns = this._ResultService.listColumns;
   }
-  
+
   ngOnInit(): void {
-    this.getAllQuestionsresults()
+    this.getAllQuestionsresults();
   }
   columns: ListColumn[] = [];
-  ResultsList:any
+  ResultsList: any;
   length!: number;
   pageSize = 10;
-  groups:any
+  groups: any;
   pageIndex = 0;
-  paginatedresultList:any
+  paginatedresultList: any;
   onViewAction(question: MaintainQuestionResponse): void {
-this.router.navigate(['dashboard/instructor/results/view'])
-   
+    this.router.navigate(['dashboard/instructor/results/view']);
   }
 
   getAllQuestionsresults(): void {
     this._ResultService.getCompletedQuizesresult().subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         this.length = res.length;
-       this.groups=res
-       
-        res.forEach((ele:any) => {
-          const {title,group,difficulty}=ele.quiz;
-    ele.title=title
-    ele.difficulty=difficulty
-ele.group=group
-   this.getGroupById(ele.group).subscribe((group) => {
+        this.groups = res;
+
+        res.forEach((ele: any) => {
+          const { title, group, difficulty } = ele.quiz;
+          ele.title = title;
+          ele.difficulty = difficulty;
+          ele.group = group;
+          this.getGroupById(ele.group).subscribe((group) => {
             ele.group = group.name;
-            console.log( ele.quiz.group)
           });
         });
         this.ResultsList = res;
-        console.log(this.ResultsList)
-      this.updatePaginatedQuestions()
+        console.log(this.ResultsList);
+        this.updatePaginatedQuestions();
       },
     });
   }
@@ -63,7 +64,7 @@ ele.group=group
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
 
-  this.updatePaginatedQuestions()
+    this.updatePaginatedQuestions();
   }
   updatePaginatedQuestions(): void {
     this.paginatedresultList = this.ResultsList.slice(
@@ -71,5 +72,4 @@ ele.group=group
       this.pageIndex * this.pageSize + this.pageSize
     );
   }
-
 }

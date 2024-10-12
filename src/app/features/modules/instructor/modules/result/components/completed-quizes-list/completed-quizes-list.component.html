@@ -1,15 +1,18 @@
-
-<div class="card border">
-  <app-list
-  class="w-75 m-5 mx-auto"
-    [headers]="columns"
-    [data]="paginatedresultList"
-  [isPaginated]="true"
-  (handleViewEvent)="onViewAction($event)"
-  [length]="length"
-  [pageIndex]="pageIndex"
- 
-  (handlePageEvent)="onPaginationAction($event)">
-</app-list>
-
+<div class="container">
+  <div class="row">
+    <div class="border p-4">
+      <h5 class="ternary-color mb-3">Completed Quizzes</h5>
+      <app-list
+        class="w-75 m-5 mx-auto"
+        [headers]="columns"
+        [data]="paginatedresultList"
+        [isPaginated]="true"
+        (handleViewEvent)="onViewAction($event)"
+        [length]="length"
+        [pageIndex]="pageIndex"
+        (handlePageEvent)="onPaginationAction($event)"
+      >
+      </app-list>
+    </div>
+  </div>
 </div>

@@ -15,26 +15,22 @@ export class ResultService {
     return this.http.get<any[]>(this.url + '/' + 'result');
   }
 
- 
   get listColumns(): ListColumn[] {
     return [
       {
         type: 'text',
         header: ' Title',
         datafield: 'title',
-       
       },
       {
         type: 'text',
         header: 'Group name',
         datafield: 'group',
-      
       },
       {
         type: 'text',
-        header: 'No. of persons in group',
+        header: 'Category type',
         datafield: 'difficulty',
-  
       },
       {
         type: 'length',
