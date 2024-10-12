@@ -14,6 +14,8 @@ export class QuizPageComponent {
   questions: QuizResponse;
   answers: Answer[] = [];
   selectedAnswers: { [key: string]: string } = {};
+  currentStep = 0;
+  noOfQuestions = 0;
 
   constructor(
     private quizService: QuizService,
@@ -23,11 +25,11 @@ export class QuizPageComponent {
 
   ngOnInit() {
     this.questions = this.quizService.questions;
+    this.noOfQuestions = this.questions.data.questions.length;
   }
 
   chooseAnswer(questionId: string, selectedOption: string) {
     this.selectedAnswers[questionId] = selectedOption;
-    console.log(this.selectedAnswers);
 
     const existingAnswer = this.answers.find(
       (answer) => answer.question === questionId
@@ -56,5 +58,32 @@ export class QuizPageComponent {
   resetAnswers() {
     this.answers = [];
     this.selectedAnswers = {};
+  }
+
+  navigateQuestion(index: number) {
+    this.currentStep = index;
+  }
+
+  getStepStyle(index: number, question: any): string {
+    const isAnswered = this.answers.some(
+      (answer) => answer.question === question._id
+    );
+
+    // Current step
+    if (index === this.currentStep) {
+      return 'current-step';
+    }
+
+    // Previous step
+    if (index < this.currentStep) {
+      return isAnswered ? 'answered-step' : 'unanswered-previous-step';
+    }
+
+    // Next step
+    if (index > this.currentStep) {
+      return isAnswered ? 'answered-step' : 'next-step';
+    }
+
+    return 'next-step';
   }
 }
