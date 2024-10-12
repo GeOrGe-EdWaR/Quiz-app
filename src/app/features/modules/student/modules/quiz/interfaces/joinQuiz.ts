@@ -3,7 +3,7 @@ export interface JoinQuiz {
   message: string;
 }
 
- interface ParticipantData {
+interface ParticipantData {
   quiz: string;
   participant: string;
   score: number;

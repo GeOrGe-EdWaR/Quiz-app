@@ -3,6 +3,10 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { ViewResultComponent } from '../view-result/view-result.component';
+import { ToastrService } from 'ngx-toastr';
+import { ListColumn } from 'src/app/shared/interfaces/list-column';
+import { Result } from '../../interfaces/result';
+import { ResultService } from '../../services/result.service';
 
 @Component({
   selector: 'app-result-list',
@@ -12,7 +16,23 @@ import { ViewResultComponent } from '../view-result/view-result.component';
 export class ResultListComponent {
   resultDialogRef: MatDialogRef<ViewResultComponent>;
 
-  constructor(private dialog: MatDialog) {}
+  resultList: Result[] = [];
+  paginatedResultList: Result[] = [];
+
+  columns: ListColumn[] = [];
+
+  length!: number;
+  pageSize = 10;
+  pageIndex = 0;
+
+  addDialogRef!: MatDialogRef<ViewResultComponent>;
+  constructor(
+    private resultService: ResultService,
+    public dialog: MatDialog,
+    private _toastr: ToastrService
+  ) {
+    this.columns = this.resultService.listColumns;
+  }
 
   showResult(): void {
     this.resultDialogRef = this.dialog.open(ViewResultComponent, {
@@ -55,6 +75,42 @@ export class ResultListComponent {
           finished_at: '2024-10-10T19:17:05.477Z',
         },
       },
+    });
+  }
+
+  ngOnInit(): void {
+    this.getResultList();
+  }
+
+  getResultList(): void {
+    this.resultService.getResultList().subscribe({
+      next: (data: any) => {
+        this.length = data.length;
+        this.resultList = data;
+        this.updatePaginatedResults();
+      },
+    });
+  }
+
+  onPaginationAction(event: any): void {
+    this.length = event.length;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+
+    this.updatePaginatedResults();
+  }
+
+  updatePaginatedResults(): void {
+    this.paginatedResultList = this.resultList.slice(
+      this.pageIndex * this.pageSize,
+      this.pageIndex * this.pageSize + this.pageSize
+    );
+  }
+
+  onViewAction(result: Result ): void {
+    this.dialog.open(ViewResultComponent, {
+      minWidth: '50%',
+      data: result,
     });
   }
 }
