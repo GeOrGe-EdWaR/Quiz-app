@@ -1,10 +1,15 @@
 @import '../../../../assets/styles/abstract/variables.scss';
 
-.sidebar {
-  min-height: 89vh;
+aside {
+  height: 100%;
 }
 
-.item{
+.sidebar {
+  min-height: 89vh;
+  height: 100%;
+}
+
+.item {
   border-right: 3px solid transparent;
 }
 

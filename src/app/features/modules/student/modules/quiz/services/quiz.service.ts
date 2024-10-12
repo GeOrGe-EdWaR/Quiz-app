@@ -4,6 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { QuizResponse } from '../interfaces/quizResponse';
 import { JoinQuiz } from '../interfaces/joinQuiz';
 import { ListColumn } from 'src/app/shared/interfaces/list-column';
+import { ResponseSubmitQuiz } from '../interfaces/responseSubmitQuiz';
+import { AnswerData } from '../interfaces/answer';
 
 @Injectable({
   providedIn: 'root',
@@ -24,8 +26,11 @@ export class QuizService {
     );
   }
 
-  submitQuiz(answers: any, quizID: string) {
-    return this.httpClient.post(this.url + 'submit/' + quizID, answers);
+  submitQuiz(answers: AnswerData, quizID: string): Observable<ResponseSubmitQuiz> {
+    return this.httpClient.post<ResponseSubmitQuiz>(
+      this.url + 'submit/' + quizID,
+      answers
+    );
   }
 
   get listColumns(): ListColumn[] {
