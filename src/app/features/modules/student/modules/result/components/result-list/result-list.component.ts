@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-import { ViewResultComponent } from '../view-result/view-result.component';
+import { ResultService } from '../../services/result.service';
 import { ToastrService } from 'ngx-toastr';
+
 import { ListColumn } from 'src/app/shared/interfaces/list-column';
 import { Result } from '../../interfaces/result';
-import { ResultService } from '../../services/result.service';
+
+import { ViewResultComponent } from '../view-result/view-result.component';
 
 @Component({
   selector: 'app-result-list',
