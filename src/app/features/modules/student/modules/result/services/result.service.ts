@@ -17,35 +17,30 @@ export class ResultService {
   get listColumns(): ListColumn[] {
     return [
       {
-        type: 'object',
+        type: 'text',
         header: 'Quiz Title',
-        datafield: 'quiz',
-        objectKey: 'title',
+        datafield: 'title',
       },
-      // {
-      //   type: 'object',
-      //   header: 'Questions Number',
-      //   datafield: 'quiz',
-      //   objectKey: 'questions_number',
-      // },
-      // {
-      //   type: 'text',
-      //   header: 'Type',
-      //   datafield: 'quiz',
-      //   objectKey: 'type',
-      // },
-      // {
-      //   type: 'text',
-      //   header: 'Difficulty',
-      //   datafield: 'quiz',
-      //   objectKey: 'difficulty',
-      // },
-      // {
-      //   type: 'date',
-      //   header: 'Schedule',
-      //   datafield: 'quiz',
-      //   objectKey: 'schadule',
-      // },
+      {
+        type: 'text',
+        header: 'Questions Number',
+        datafield: 'questions_number',
+      },
+      {
+        type: 'text',
+        header: 'Type',
+        datafield: 'type',
+      },
+      {
+        type: 'text',
+        header: 'Difficulty',
+        datafield: 'difficulty',
+      },
+      {
+        type: 'date',
+        header: 'Schedule',
+        datafield: 'schadule',
+      },
       {
         type: 'actions',
         header: 'Actions',

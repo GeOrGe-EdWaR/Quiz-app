@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-import { ViewResultComponent } from '../view-result/view-result.component';
+import { ResultService } from '../../services/result.service';
 import { ToastrService } from 'ngx-toastr';
+
 import { ListColumn } from 'src/app/shared/interfaces/list-column';
 import { Result } from '../../interfaces/result';
-import { ResultService } from '../../services/result.service';
+
+import { ViewResultComponent } from '../view-result/view-result.component';
 
 @Component({
   selector: 'app-result-list',
@@ -34,50 +36,6 @@ export class ResultListComponent {
     this.columns = this.resultService.listColumns;
   }
 
-  showResult(): void {
-    this.resultDialogRef = this.dialog.open(ViewResultComponent, {
-      minWidth: '50%',
-      data: {
-        // Replace with result row
-        quiz: {
-          _id: '67082762da1e25f65c8f7249',
-          code: 'S9AVJCT',
-          title: 'test quiz for group A',
-          description: 'test',
-          status: 'closed',
-          instructor: '66fa02adda1e25f65c8e5a4d',
-          group: '66ff4af2da1e25f65c8e6885',
-          questions_number: 2,
-          schadule: '2024-10-10T22:20:00.000Z',
-          duration: 5,
-          score_per_question: 2,
-          type: 'BE',
-          difficulty: 'hard',
-          updatedAt: '2024-10-10T22:26:00.629Z',
-          createdAt: '2024-10-10T19:13:38.058Z',
-          __v: 0,
-          closed_at: '2024-10-10T22:26:00.629Z',
-        },
-        result: {
-          _id: '67082775da1e25f65c8f7252',
-          quiz: {
-            _id: '67082762da1e25f65c8f7249',
-            title: 'test quiz for group A',
-          },
-          participant: {
-            _id: '66fccc6cda1e25f65c8e6117',
-            first_name: 'ola',
-            last_name: 'fawzii',
-            email: 'olafawzii@gmail.com',
-          },
-          score: 0,
-          started_at: '2024-10-10T19:13:57.165Z',
-          finished_at: '2024-10-10T19:17:05.477Z',
-        },
-      },
-    });
-  }
-
   ngOnInit(): void {
     this.getResultList();
   }
@@ -86,7 +44,17 @@ export class ResultListComponent {
     this.resultService.getResultList().subscribe({
       next: (data: any) => {
         this.length = data.length;
-        this.resultList = data;
+        this.resultList = data.map(({ quiz, result }: Result) => {
+          return {
+            ...quiz,
+            ...result,
+            title: quiz.title,
+            questions_number: quiz.questions_number,
+            type: quiz.type,
+            difficulty: quiz.difficulty,
+            schadule: quiz.schadule,
+          };
+        });
         this.updatePaginatedResults();
       },
     });
@@ -107,10 +75,10 @@ export class ResultListComponent {
     );
   }
 
-  onViewAction(result: Result ): void {
+  onViewAction(result: any): void {
     this.dialog.open(ViewResultComponent, {
       minWidth: '50%',
-      data: result,
+      data: { ...result },
     });
   }
 }
