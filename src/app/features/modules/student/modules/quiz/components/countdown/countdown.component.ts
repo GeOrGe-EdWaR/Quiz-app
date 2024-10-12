@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
-  styleUrls: ['./countdown.component.css'],
+  styleUrls: ['./countdown.component.scss'],
 })
 export class CountdownComponent implements OnDestroy {
   @Input() minutes: number = 0;
