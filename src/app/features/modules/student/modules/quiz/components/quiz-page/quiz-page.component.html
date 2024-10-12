@@ -79,20 +79,20 @@
           </div>
           <div class="d-flex justify-content-end align-items-center">
             <button
-              *ngIf="currentStep < noOfQuestions - 1"
-              class="rounded-3 bg-ternary-color custom-fab px-5 me-2 mt-4"
-              type="submit"
-              (click)="navigateQuestion(currentStep + 1)"
-            >
-              <span class="main-color">Next</span>
-            </button>
-            <button
               *ngIf="currentStep > 0"
               class="rounded-3 bg-ternary-color custom-fab px-5 me-2 mt-4"
               type="submit"
               (click)="navigateQuestion(currentStep - 1)"
             >
               <span class="main-color">Previous</span>
+            </button>
+            <button
+              *ngIf="currentStep < noOfQuestions - 1"
+              class="rounded-3 bg-ternary-color custom-fab px-5 me-2 mt-4"
+              type="submit"
+              (click)="navigateQuestion(currentStep + 1)"
+            >
+              <span class="main-color">Next</span>
             </button>
             <button
               class="rounded-3 bg-ternary-color custom-fab px-5 me-2 mt-4"
