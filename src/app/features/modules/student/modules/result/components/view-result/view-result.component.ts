@@ -2,8 +2,6 @@ import { Component, Inject } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { Result } from '../../interfaces/result';
-
 @Component({
   selector: 'app-view-result',
   templateUrl: './view-result.component.html',
@@ -15,17 +13,15 @@ export class ViewResultComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ViewResultComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Result
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
-    const { quiz, result } = this.data;
+    const { participant, score, questions_number, score_per_question } =
+      this.data;
 
-    this.userName =
-      result.participant.first_name + ' ' + result.participant.last_name;
-
-    this.percentage =
-      (result.score / (quiz.questions_number * quiz.score_per_question)) * 100;
+    this.userName = participant.first_name + ' ' + participant.last_name;
+    this.percentage = (score / (questions_number * score_per_question)) * 100;
   }
 
   close(): void {
