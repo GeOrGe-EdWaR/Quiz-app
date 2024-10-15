@@ -21,6 +21,7 @@ export class ListComponent {
   @Output() handleViewEvent = new EventEmitter();
   @Output() handleEditEvent = new EventEmitter();
   @Output() handleDeleteEvent = new EventEmitter();
+  @Output() handleReAssignEvent = new EventEmitter();
   @Output() handlePageEvent = new EventEmitter();
 
   @Input() headers: ListColumn[] = [];
@@ -58,6 +59,10 @@ export class ListComponent {
 
   delete(id: number): void {
     this.handleDeleteEvent.emit(id);
+  }
+
+  assign(id:number):void {
+    this.handleReAssignEvent.emit(id);
   }
 
   handlePaginate(e: any): void {

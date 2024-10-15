@@ -22,10 +22,9 @@
         <ng-container [ngSwitch]="header.type">
           <span *ngSwitchCase="'text'">{{ element[header.datafield] }}</span>
 
-          <span *ngSwitchCase="'date'">{{
-            element[header.datafield] | date : header.format
-          }}</span>
-
+          <span *ngSwitchCase="'date'">
+            {{ element[header.datafield] | date : header.format }}
+          </span>
           <span *ngSwitchCase="'list'">
             <span
               *ngFor="let item of element[header.datafield]; let isLast = last"
@@ -78,6 +77,11 @@
               (click)="delete(element?._id)"
               >delete</mat-icon
             >
+            <mat-icon
+              *ngIf="header.actions?.isReAssign"
+              (click)="assign(element?._id)"
+              >autorenew</mat-icon
+            >
           </div>
         </ng-container>
       </td>
@@ -102,6 +106,6 @@
   ></app-paginator>
 </div>
 
-<ng-container *ngIf="data.length === 0">
+<ng-container *ngIf="data?.length === 0">
   <app-no-data></app-no-data>
 </ng-container>

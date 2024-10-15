@@ -23,6 +23,21 @@ export class QuizService {
     return this._HttpClient.get<Quiz>(`quiz/${quizID}`);
   }
 
+  allQuizzes(): Observable<Quiz[]> {
+    return this._HttpClient.get<Quiz[]>(`quiz`);
+  }
+
+  deleteQuiz(quizID: string): Observable<any> {
+    return this._HttpClient.delete<Quiz[]>(`quiz/${quizID}`);
+  }
+
+  reassignQuiz(quizID: string, reassignData: FormGroup): Observable<any> {
+    return this._HttpClient.post<Quiz[]>(
+      `quiz/reassign/${quizID}`,
+      reassignData.value
+    );
+  }
+
   get listColumns(): ListColumn[] {
     return [
       {
@@ -44,6 +59,52 @@ export class QuizService {
         type: 'text',
         header: 'No. of students',
         datafield: 'participants',
+      },
+    ];
+  }
+
+  get listQuizzesColumns(): ListColumn[] {
+    return [
+      {
+        type: 'text',
+        header: 'Title',
+        datafield: 'title',
+      },
+      {
+        type: 'text',
+        header: 'Code',
+        datafield: 'code',
+      },
+      {
+        type: 'text',
+        header: 'Status',
+        datafield: 'status',
+      },
+      {
+        type: 'text',
+        header: 'Duration',
+        datafield: 'duration',
+      },
+      {
+        type: 'text',
+        header: 'Type',
+        datafield: 'type',
+      },
+      {
+        type: 'date',
+        header: 'Date',
+        datafield: 'schadule',
+      },
+      {
+        type: 'actions',
+        header: 'Actions',
+        datafield: 'actions',
+        actions: {
+          isView: true,
+          isEdit: false,
+          isDelete: true,
+          isReAssign: true,
+        },
       },
     ];
   }
