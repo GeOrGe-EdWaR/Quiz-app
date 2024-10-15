@@ -63,7 +63,7 @@ export class GroupComponent {
 
   deleteGroupDialog(group: Group) {
     const dialogRef = this.dialog.open(DeleteComponent, {
-      minWidth: '50%',
+      width: '50%',
       data: {
         title: 'Delete Group',
         message: `Are you sure you want to delete group ${group.name} ?`,

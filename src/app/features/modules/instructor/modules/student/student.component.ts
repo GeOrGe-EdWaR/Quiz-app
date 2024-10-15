@@ -165,7 +165,7 @@ export class StudentComponent {
 
   deleteStudentDialog(student: Student, fromGroup?: boolean, groupID?: string) {
     const dialogRef = this.dialog.open(DeleteComponent, {
-      minWidth: '50%',
+      width: '50%',
       data: {
         title: 'Delete Student',
         message: `Are you sure you want to delete student ${student.first_name}?`,
