@@ -29,6 +29,7 @@ import { DeleteComponent } from './components/delete/delete.component';
 import { ListComponent } from './components/list/list.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 
 
@@ -41,6 +42,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     ListComponent,
     NoDataComponent,
     PaginatorComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     CommonModule,

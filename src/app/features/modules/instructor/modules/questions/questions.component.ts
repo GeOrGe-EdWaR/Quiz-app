@@ -93,7 +93,7 @@ export class QuestionsComponent {
 
   onDeleteAction(_id: string): void {
     this.deleteDialogRef = this.dialog.open(DeleteComponent, {
-      minWidth: '50%',
+      width: '50%',
       data: {
         title: 'Delete Question',
         message: `Are you sure you want to delete this question  ?`,

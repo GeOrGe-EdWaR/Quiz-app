@@ -57,7 +57,7 @@ export class AllQuizzesComponent {
 
   onDeleteAction(_id: string): void {
     const deleteDialogRef = this.dialog.open(DeleteComponent, {
-      minWidth: '50%',
+      width: '50%',
       data: {
         title: 'Delete Question',
         message: `Are you sure you want to delete this question ?`,

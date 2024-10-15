@@ -24,6 +24,7 @@ export class DeleteComponent {
   close(): void {
     this.dialog.closeAll();
   }
+
   onSubmit() {
     this.dialogRef.close({
       _id: this.data._id,

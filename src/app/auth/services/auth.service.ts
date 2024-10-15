@@ -13,7 +13,6 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root',
 })
 export class AuthService {
-  
   role: any = '';
   url = 'auth/';
 
@@ -54,11 +53,19 @@ export class AuthService {
     );
   }
 
-   onForgetPass(forgetPassForm: IforgetPass): Observable<any> {
-    return this.httpClient.post(`${this.url}forgot-password`, forgetPassForm)
+  onForgetPass(forgetPassForm: IforgetPass): Observable<any> {
+    return this.httpClient.post(`${this.url}forgot-password`, forgetPassForm);
   }
 
   onResetPass(resetPassForm: IresetPass): Observable<any> {
-    return this.httpClient.post(`${this.url}reset-password`, resetPassForm)
+    return this.httpClient.post(`${this.url}reset-password`, resetPassForm);
   }
+
+  changePassword(changePasswordForm: FormGroup): Observable<any> {
+    return this.httpClient.post(
+      this.url + 'change-password',
+      changePasswordForm.value
+    );
+  }
+
 }
