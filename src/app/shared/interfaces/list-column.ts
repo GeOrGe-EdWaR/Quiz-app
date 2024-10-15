@@ -9,5 +9,6 @@ export interface ListColumn {
     isView?: boolean;
     isEdit?: boolean;
     isDelete?: boolean;
+    isReAssign?: boolean;
   };
 }
